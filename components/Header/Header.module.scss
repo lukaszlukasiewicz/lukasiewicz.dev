@@ -1,0 +1,51 @@
+.Header {
+  min-height:95vh;
+  display:grid;
+  align-items: center;
+  text-align: center;
+  transition:all .5s;
+  max-width: 100%;
+  justify-content: center;
+  min-width: 0;
+  padding-bottom:2em;
+  position:relative;
+
+  > div {
+    min-width: 0;
+    overflow:hidden;
+  }
+  h1 {
+    white-space: nowrap;
+    font-size:clamp(10em,30vw,50em);
+    text-align: left;
+    max-width:100%;
+    margin-bottom: -.3em;
+    margin-top:.1em;
+    user-select: none;
+    > span {
+      letter-spacing: -.04em;
+      padding-right:.5em;
+      margin-right:-.5em;
+    }
+  }
+  p {
+    max-widtH:40em;
+    margin:-2em auto 1em auto;
+    font-size:1.2em;
+    line-height:1.6;
+    padding:0 1em;
+    color:var(--page-color);
+    @media screen and (max-widtH:40em) {
+      font-size:.8em
+    }
+  }
+}
+
+.SubHeader {
+  > span {
+    line-height: 2.4em;
+    box-decoration-break: clone;
+    border: 0.4em solid rgb(42, 54, 59);
+    border-width: .35em .6em .5em .6em;
+  }
+}

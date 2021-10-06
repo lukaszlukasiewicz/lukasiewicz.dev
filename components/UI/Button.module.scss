@@ -1,0 +1,14 @@
+.Button {
+  border:0;
+  padding:1em 2em;
+  border-radius:20em;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  cursor: pointer;
+  &.Button__big {
+    font-size:1.2em;
+  }
+  &.Button__medium {
+    font-size:1em;
+  }
+}

@@ -1,0 +1,10 @@
+.AnimatedHeader {
+  > span {
+    display:inline-block;
+    overflow:hidden;
+    margin-top:-1em;
+    > span{
+      display:inline-block;
+    }
+  }
+}
