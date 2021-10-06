@@ -19,7 +19,8 @@
     font-size:clamp(10em,30vw,50em);
     text-align: left;
     max-width:100%;
-    margin-bottom: -.3em;
+    width:fit-content;
+    margin: .1em auto -.3em auto;
     margin-top:.1em;
     user-select: none;
     > span {
