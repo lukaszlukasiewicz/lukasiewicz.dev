@@ -11,6 +11,13 @@ const Menu = () => {
   const currentPage = usePageConfig()
   const currentLocale = (locale ?? "en") as keyof typeof currentPage.name
   return <nav className={Styles.Menu}>
+    <style>
+      {`:root {
+        --page-color: ${currentPage.color};
+        --page-background-color: ${currentPage.backgroundColor};
+        --page-primary-color: ${currentPage.primaryColor};
+      }`}
+    </style>
     <div style={{ color: currentPage?.color, borderBottomColor: currentPage?.color + "22" }}>
       <div className={Styles.Menu__link}>
         <Link scroll={false} href="/">
