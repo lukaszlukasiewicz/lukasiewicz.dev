@@ -13,10 +13,12 @@ const Header: React.FC<HeaderProps> = ({ children, style }) => {
     </div>
   </div>
 }
+type SubHeaderProps = {
+  pageId?: string
+}
+export const SubHeader: React.FC<SubHeaderProps> = ({ children, pageId = "" }) => {
 
-export const SubHeader: React.FC = ({ children }) => {
-
-  const page = usePageConfig();
+  const page = usePageConfig(pageId);
   return <p className={Styles.SubHeader}>
     <span style={{ background: page.primaryColor, borderColor: page.primaryColor }}>
       {children}
