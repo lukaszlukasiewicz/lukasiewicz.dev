@@ -30,13 +30,20 @@ const Contact: NextPage = () => {
       <TransitionCover>
         <Head>
           <title>Contact page</title>
+          <style>
+            {`:root {
+              --page-color: ${page.color};
+              --page-background-color: ${page.backgroundColor};
+              --page-primary-color: ${page.primaryColor};
+            }`}
+          </style>
         </Head>
         <Header style={{
           backgroundColor,
           color
         }}>
           <AnimatedHeader initial="hidden" animate="visible" split="letter">{title}</AnimatedHeader>
-          <motion.div key={locale} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "4em" }} transition={{ duration: 1, ease: "backOut" }}>
+          <motion.div key={locale} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ duration: 1, ease: "backOut" }}>
             <SubHeader pageId="contact">{headerText}</SubHeader>
           </motion.div>
 

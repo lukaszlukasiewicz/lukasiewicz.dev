@@ -43,13 +43,20 @@ const About: NextPage = () => {
       <TransitionCover>
         <Head>
           <title>About page</title>
+          <style>
+            {`:root {
+              --page-color: ${page.color};
+              --page-background-color: ${page.backgroundColor};
+              --page-primary-color: ${page.primaryColor};
+            }`}
+          </style>
         </Head>
         <Header key="heder_about" style={{
           backgroundColor: page.backgroundColor,
           color: page.color
         }}>
           <AnimatedHeader initial="hidden" animate="visible" split="letter">{title}</AnimatedHeader>
-          <motion.div key={locale + "p"} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "4em" }} transition={{ type: "spring", delay: .3 }}>
+          <motion.div key={locale + "p"} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ type: "spring", delay: .3 }}>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam delectus nobis soluta officia reprehenderit ducimus praesentium nesciunt rerum at est omnis, itaque velit libero optio amet vitae iure eligendi.</p>
           </motion.div>
           <motion.div style={{ fontSize: "2em", position: 'absolute', bottom: "2em", left: "50%" }} initial={{ y: "-2em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "2em" }} transition={{ duration: 1, ease: "backOut", delay: .5 }}>
