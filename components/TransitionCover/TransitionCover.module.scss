@@ -1,18 +1,18 @@
 .TransitionCover {
   position:fixed;
   top:0;
-  left:-10vmax;
-  width:120vmax;
+  left:-15vmax;
+  width:130vmax;
   height:100vh;
   z-index:99;
   display:flex;
   transform: skew(15deg);
   transform-origin: center;
+  pointer-events: none;
   @media (max-width:500px) {
     transform: rotate(90deg) skew(15deg);
     top:-5vmax;
   }
-  pointer-events: none;
   > div {
     width:20%;
     background:#000000;
