@@ -12,7 +12,7 @@ const Menu = () => {
   const currentLocale = (locale ?? "en") as keyof typeof currentPage.name
   return <nav className={Styles.Menu}>
     <style>
-      {`:root {
+      {`.${Styles.Menu} {
         --page-color: ${currentPage.color};
         --page-background-color: ${currentPage.backgroundColor};
         --page-primary-color: ${currentPage.primaryColor};
