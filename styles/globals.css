@@ -6,6 +6,15 @@ body {
   font-family: Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+body {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+#__next {
+
+  overflow-y: auto;
+}
 
 a {
   color: inherit;

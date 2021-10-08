@@ -3,8 +3,9 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import usePageConfig from 'hooks/usePageConfig'
 import Menu from 'components/Menu/Menu'
+import { AnimatePresence } from 'framer-motion'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   const page = usePageConfig();
   return <>
     <Head>
@@ -17,7 +18,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </style>
     </Head>
     <Menu />
-    <Component {...pageProps} />
+    <AnimatePresence exitBeforeEnter>
+      <Component {...pageProps} key={router.route} />
+    </AnimatePresence>
   </>
 }
 export default MyApp

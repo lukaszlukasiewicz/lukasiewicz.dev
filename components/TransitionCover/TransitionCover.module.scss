@@ -1,0 +1,27 @@
+.TransitionCover {
+  position:fixed;
+  top:0;
+  left:-10vmax;
+  width:120vmax;
+  height:100vh;
+  z-index:99;
+  display:flex;
+  transform: skew(15deg);
+  transform-origin: center;
+  @media (max-width:500px) {
+    transform: rotate(90deg) skew(15deg);
+    top:-5vmax;
+  }
+  pointer-events: none;
+  > div {
+    width:20%;
+    background:#000000;
+    transform-origin: top left;
+    margin-right:-1px;
+    height:100vh;
+    &:nth-child(even) {
+      transform-origin: bottom left;
+    }
+  }
+
+}
