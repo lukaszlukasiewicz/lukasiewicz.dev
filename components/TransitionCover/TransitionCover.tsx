@@ -17,26 +17,18 @@ const variants = {
 
 const TransitionCover: React.FC<TransitionCoverProps> = ({ children, direction = "in" }) => {
 
-  const { route } = useRouter();
   const page = usePageConfig()
-  console.log(page.backgroundColor);
-
   const style = {
     backgroundColor: page.backgroundColor
   }
   return (<>
-    {/*     <div className={`${Styles.TransitionCover} ${direction == "in" ? Styles.TransitionIn : ""}`}>
-      <motion.div variants={variants} initial="visible" animate="hidden" exit="hidden" transition={{ ...transition, delay: 0 }} style={style}></motion.div>
-      <motion.div variants={variants} initial="visible" animate="hidden" exit="hidden" transition={{ ...transition, delay: .2 }} style={style} ></motion.div>
-      <motion.div variants={variants} initial="visible" animate="hidden" exit="hidden" transition={{ ...transition, delay: .4 }} style={style} ></motion.div>
-      <motion.div variants={variants} initial="visible" animate="hidden" exit="hidden" transition={{ ...transition, delay: .6 }} style={style} ></motion.div>
-      <motion.div variants={variants} initial="visible" animate="hidden" exit="hidden" transition={{ ...transition, delay: .8 }} style={style} ></motion.div>
-    </div> */}
     <div className={`${Styles.TransitionCover} ${direction == "in" ? Styles.TransitionIn : ""}`}>
       <motion.div variants={variants} initial="hidden" animate="hidden" exit="visible" transition={{ ...transition, delay: 0 }} style={style} ></motion.div>
       <motion.div variants={variants} initial="hidden" animate="hidden" exit="visible" transition={{ ...transition, delay: .2 }} style={style} ></motion.div>
       <motion.div variants={variants} initial="hidden" animate="hidden" exit="visible" transition={{ ...transition, delay: .4 }} style={style} ></motion.div>
-      <motion.div variants={variants} initial="hidden" animate="hidden" exit="visible" transition={{ ...transition, delay: .6 }} style={style} ></motion.div>
+      <motion.div variants={variants} initial="hidden" animate="hidden" exit="visible" transition={{ ...transition, delay: .6 }} style={style} onAnimationComplete={def => {
+        if (def == "visible") window.scrollTo(0, 0)
+      }}></motion.div>
       <motion.div variants={variants} initial="hidden" animate="hidden" exit="visible" transition={{ ...transition, delay: .8 }} style={style} ></motion.div>
     </div>
     {children}
@@ -44,15 +36,3 @@ const TransitionCover: React.FC<TransitionCoverProps> = ({ children, direction =
 }
 
 export default TransitionCover;
-
-
-/*
-    <motion.div
-      variants={variants}
-      initial="hidden"
-      animate="hidden"
-      exit="visible"
-      transition={{ duration: .5, ease: "easeInOut" }}
-    ></motion.div>
-
-*/
