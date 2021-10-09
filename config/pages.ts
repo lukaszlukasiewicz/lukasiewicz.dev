@@ -1,9 +1,9 @@
-type Locales = {
+export type Locales = {
   en: string,
   pl: string
 }
 
-type Page = {
+export type Page = {
   path: string,
   color: string,
   backgroundColor: string,
@@ -13,7 +13,7 @@ type Page = {
   inMenu: Boolean
 }
 
-type Pages = {
+export type Pages = {
   [key: string]: Page
 }
 
