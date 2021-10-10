@@ -7,11 +7,11 @@ type HeaderProps = {
 }
 
 const Header: React.FC<HeaderProps> = ({ children, style }) => {
-  return <div className={Styles.Header} style={style}>
+  return <header className={Styles.Header} style={style}>
     <div>
       {children}
     </div>
-  </div>
+  </header>
 }
 type SubHeaderProps = {
   pageId?: string

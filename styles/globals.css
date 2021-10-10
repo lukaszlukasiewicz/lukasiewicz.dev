@@ -24,3 +24,18 @@ a {
 * {
   box-sizing: border-box;
 }
+@media (max-width:500px) {
+  .contact-page-pl header h1 {
+    font-size:25vw;
+  }  
+  .about-page-pl header h1 {
+    font-size:20vw;
+    line-height:1.2;
+  }
+  .about-page-en header h1 {
+    font-size:22vw;
+  }
+  .home-page header h1 {
+    font-size:40vw;
+  }
+}
