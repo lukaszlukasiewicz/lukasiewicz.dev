@@ -1,14 +1,12 @@
 .AnimatedHeader {
- > span {
-   white-space: nowrap;
- }
-}
-
-.AnimatedSpan {
-  display:inline-block;
-  padding-right:.27em;
-  margin-right:-.3em;
-  > span{
+  span {
     display:inline-block;
   }
+  > span {
+    white-space: nowrap;
+  }
+  > span > span {
+    padding-right:.27em;
+    margin-right:-.3em;
+  } 
 }

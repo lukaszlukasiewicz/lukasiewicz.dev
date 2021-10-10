@@ -7,7 +7,8 @@ type AnimatedHeaderProps = {
   children: string,
   split?: "letter" | "word",
   initial?: string,
-  animate?: string
+  animate?: string,
+  level?: number,
 }
 
 
@@ -35,41 +36,30 @@ const animateProps = (initial: string | undefined, animate: string | undefined, 
     },
   }
 }
-const AnimatedHeader = ({ children, split = "word", initial, animate }: AnimatedHeaderProps) => {
+
+
+
+const AnimatedHeader = ({ children, split = "word", level = 2, initial, animate }: AnimatedHeaderProps) => {
   const { locale } = useRouter()
   const words = children.trim().split(" ")
   let letterIndex = 0;
-  return <h1 className={Styles.AnimatedHeader}>
+  const Header = `h${level}` as keyof JSX.IntrinsicElements;
+  return <Header className={Styles.AnimatedHeader}>
     {words.map((word, index) => {
-      return <React.Fragment key={word + index}><span className={split == "word" ? Styles.AnimatedSpan : ""} >
-        <motion.span {...(split == "word" ? animateProps(initial, animate, index) : {})}>
-          {split == "word" ? word : word.split("").map((letter) => {
-            letterIndex++
-            return <span className={split == "letter" ? Styles.AnimatedSpan : ""} key={word + letter + letterIndex}>
-              <motion.span {...animateProps(initial, animate, letterIndex)}>
+      return <React.Fragment key={word + index}>
+        <span>
+          <motion.span {...(split == "word" ? animateProps(initial, animate, index) : {})}>
+            {split == "word" ? word : word.split("").map((letter) => {
+              letterIndex++
+              return <motion.span {...animateProps(initial, animate, letterIndex)} key={word + letter + letterIndex}>
                 {letter}
               </motion.span>
-            </span>
-          })}
-        </motion.span>
-      </span>{" "}
+            })}
+          </motion.span></span>
+        {word.length == 1 ? <>&nbsp;</> : " "}
       </React.Fragment>
     })}
-  </h1>
-
-  return <h1 className={Styles.AnimatedHeader} >
-    {words.map((word, index) => {
-      if (word == " ") return <React.Fragment key={(locale as string) + index}> {word} </React.Fragment>
-      return <React.Fragment key={(locale as string) + index}>
-        <span>
-          <motion.span transition={{ duration: .7, ease: "backOut", delay: index * .05 }}>
-            {word}
-          </motion.span>
-        </span>
-        {split == "word" && " "}
-      </React.Fragment>
-    })}
-  </h1 >
+  </Header>
 }
 
 export default AnimatedHeader
