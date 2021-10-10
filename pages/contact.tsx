@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import usePageConfig from 'hooks/usePageConfig'
 import AnimatedHeader from 'components/AnimatedHeader/AnimatedHeader'
 import { motion } from 'framer-motion'
-import { BsArrowDown } from 'react-icons/bs'
+import ScrollArrow from 'components/UI/ScrollArrow'
 import TransitionCover from 'components/TransitionCover/TransitionCover'
 
 const localeContent = {
@@ -46,10 +46,7 @@ const Contact: NextPage = () => {
           <motion.div key={locale} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ duration: 1, ease: "backOut" }}>
             <SubHeader pageId="contact">{headerText}</SubHeader>
           </motion.div>
-
-          <motion.div style={{ fontSize: "2em", position: 'absolute', bottom: "2em", left: "50%" }} initial={{ y: "-2em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "2em" }} transition={{ duration: 1, ease: "backOut", delay: .5 }}>
-            <BsArrowDown />
-          </motion.div>
+          <ScrollArrow />
         </Header>
       </TransitionCover>
     </>

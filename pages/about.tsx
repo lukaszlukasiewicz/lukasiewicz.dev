@@ -10,6 +10,8 @@ import Section from 'components/UI/Section';
 import { NegativeButton } from 'components/UI/Button';
 import TransitionCover from 'components/TransitionCover/TransitionCover';
 import { useEffect } from 'react';
+import Link from 'next/link'
+import ScrollArrow from 'components/UI/ScrollArrow';
 
 const localeContent = {
   "en": {
@@ -36,7 +38,6 @@ const About: NextPage = () => {
   const page = usePageConfig("about");
   const currentLocale: (keyof typeof localeContent) = (locale ?? "en") as keyof typeof localeContent
   const { title } = localeContent[currentLocale]
-  console.log(router);
 
   return (
     <>
@@ -59,9 +60,7 @@ const About: NextPage = () => {
           <motion.div key={locale + "p"} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ type: "spring", delay: .3 }}>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam delectus nobis soluta officia reprehenderit ducimus praesentium nesciunt rerum at est omnis, itaque velit libero optio amet vitae iure eligendi.</p>
           </motion.div>
-          <motion.div style={{ fontSize: "2em", position: 'absolute', bottom: "2em", left: "50%" }} initial={{ y: "-2em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "2em" }} transition={{ duration: 1, ease: "backOut", delay: .5 }}>
-            <BsArrowDown />
-          </motion.div>
+          <ScrollArrow />
         </Header>
         <Section>
           <div>
