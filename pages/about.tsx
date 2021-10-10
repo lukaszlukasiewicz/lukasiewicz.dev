@@ -9,8 +9,7 @@ import { BsArrowDown } from 'react-icons/bs'
 import Section from 'components/UI/Section';
 import { NegativeButton } from 'components/UI/Button';
 import TransitionCover from 'components/TransitionCover/TransitionCover';
-import { useEffect } from 'react';
-import Link from 'next/link'
+import BodyClass from "components/BodyClass/BodyClass"
 import ScrollArrow from 'components/UI/ScrollArrow';
 
 const localeContent = {
@@ -41,6 +40,7 @@ const About: NextPage = () => {
 
   return (
     <>
+      <BodyClass className={`about-page about-page-${locale}`} />
       <TransitionCover>
         <Head>
           <title>About page</title>

@@ -7,6 +7,7 @@ import AnimatedHeader from 'components/AnimatedHeader/AnimatedHeader'
 import { motion } from 'framer-motion'
 import ScrollArrow from 'components/UI/ScrollArrow'
 import TransitionCover from 'components/TransitionCover/TransitionCover'
+import BodyClass from 'components/BodyClass/BodyClass'
 
 const localeContent = {
   "en": {
@@ -14,7 +15,7 @@ const localeContent = {
     headerText: "Vivamus nec erat mollis, faucibus nisl tincidunt, mattis tortor. Ut et imperdiet quam, sed tempus ipsum. Nam euismod eros ut feugiat congue."
   },
   "pl": {
-    title: "Porozmawiajmy",
+    title: "Napisz do mnie",
     headerText: "In augue turpis, ultrices in leo sed, hendrerit hendrerit urna. Ut pretium dapibus lectus, quis euismod purus mattis eu. Sed fermentum laoreet facilisis."
   }
 }
@@ -27,6 +28,8 @@ const Contact: NextPage = () => {
   const { title, headerText } = localeContent[currentLocale]
   return (
     <>
+
+      <BodyClass className={`contact-page contact-page-${locale}`} />
       <TransitionCover>
         <Head>
           <title>Contact page</title>

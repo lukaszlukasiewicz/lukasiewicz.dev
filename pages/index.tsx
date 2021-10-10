@@ -6,6 +6,8 @@ import usePageConfig from 'hooks/usePageConfig'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import TransitionCover from 'components/TransitionCover/TransitionCover'
+import { FaGithub, FaRegKissWinkHeart } from "react-icons/fa"
+import BodyClass from 'components/BodyClass/BodyClass'
 
 const Home: NextPage = () => {
   const { locale } = useRouter()
@@ -13,6 +15,7 @@ const Home: NextPage = () => {
   const { backgroundColor, color } = page
   return (
     <>
+      <BodyClass className={`home-page home-page-${locale}`} />
       <TransitionCover >
         <Head>
           <title>Lukasiewicz.dev</title>
@@ -31,12 +34,11 @@ const Home: NextPage = () => {
         }}>
           <AnimatedHeader initial="hidden" animate="visible" split="letter">Hi ;)</AnimatedHeader>
           <motion.div key={locale + "p"} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ type: "spring", delay: .3 }}>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam delectus nobis soluta officia reprehenderit ducimus praesentium nesciunt rerum at est omnis, itaque velit libero optio amet vitae iure eligendi.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus <FaGithub /> test ipsam delectus nobis soluta officia reprehenderit ducimus praesentium nesciunt rerum at est omnis, itaque velit libero optio amet vitae iure eligendi.<FaRegKissWinkHeart /></p>
           </motion.div>
         </Header>
       </TransitionCover>
     </>
-
   )
 }
 
