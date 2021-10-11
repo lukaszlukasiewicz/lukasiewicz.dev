@@ -9,6 +9,9 @@ body {
 }
 body {
   overflow-y: scroll;
+  @media screen and (min-width:500px) {
+    font-size: 1.1em;
+  }
 }
 
 #__next {
@@ -24,18 +27,30 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.home-page header h1 {
+  font-size:25vw;
+  margin-top:0;
+}
+
+.contact-page-pl header h1 {
+  padding:0 .5em;
+}
 @media (max-width:500px) {
-  .contact-page-pl header h1 {
-    font-size:25vw;
-  }  
-  .about-page-pl header h1 {
-    font-size:20vw;
-    line-height:1.2;
+  header h1 {
+    margin-bottom:.3em !important;
   }
-  .about-page-en header h1 {
-    font-size:22vw;
+  .contact-page-pl header h1 {
+    font-size:17.5vw
+  }
+  .about-page-pl header h1 {
+    font-size:20vw
+  }
+  .about-page-en header h1 , .contact-page-en header h1 {
+    font-size:28vw;
+    line-height:.9
   }
   .home-page header h1 {
-    font-size:40vw;
+    font-size:25vw;
   }
 }
