@@ -50,7 +50,9 @@ const SocialMedia = () => {
         {socials.map((social, index) => {
           const Icon = social.icon
           return <div key={social.name}>
-            <motion.a href={social.url} variants={getIconVariants(index)}>
+            <motion.a href={social.url} variants={getIconVariants(index)} whileHover={{
+              scale: [1, 1.2, 1], transition: { repeat: Infinity, duration: 1 },
+            }}>
               <Icon color={page.color} className={Styles.SocialMedia__Icon} />
             </motion.a>
           </div>
