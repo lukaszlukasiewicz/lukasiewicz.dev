@@ -1,0 +1,36 @@
+.Footer {
+  > div {
+    max-width:80em;
+    margin:0 auto;
+    padding: 4vmax 0;
+    display:flex;
+    > * {
+      flex-grow: 0;
+      padding: 0 1em;
+      white-space: nowrap;
+    }
+    a, a * {
+      color:var(--page-background-color);
+      fill:var(--page-background-color);
+      &:hover, &:hover * {
+        color:var(--page-primary-color);
+        fill:var(--page-primary-color);
+
+      }
+
+    }
+  }
+  .HR {
+    flex-grow:1;
+    &:before {
+      content:"";
+      opacity:.2;
+      margin-top:.5em;
+      display:block;
+      border-top:1px solid var(--page-background-color);
+      width:100%;
+
+    }
+  }
+}
+
