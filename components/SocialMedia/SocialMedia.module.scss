@@ -1,0 +1,41 @@
+.SocialMedia {
+  padding:4vmax 1em;
+  min-height:60vh;
+  display:grid;
+  align-items: center;
+  background-color: var(--page-primary-color);
+  color:var(--page-color);
+  > div {
+    max-width: 40em;
+    margin:0 auto;
+    text-align:center;
+
+  }
+  h2 {
+    margin:0;
+    font-weight:300;
+    padding:0 1em;
+    font-size:clamp(2em, 1em + 2vmax, 3em);
+  }
+  p {
+    max-width:30em;
+    margin:1em auto;
+  }
+  a {
+    position:relative;
+    display:inline-block;
+  }
+  .SocialMedia__Icon {
+    font-size:clamp(1.5em, 1em + 3vmax, 5em);
+    display:block;
+    margin:0 auto;
+    position:relative;
+  }
+
+  .SocailMedia__wrapper {
+    gap:4vmax;
+    display:flex;
+    margin-top:2vmax;
+    justify-content: center;
+  }
+}
