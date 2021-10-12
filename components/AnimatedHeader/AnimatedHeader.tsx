@@ -32,12 +32,10 @@ const animateProps = (initial: string | undefined, animate: string | undefined, 
     transition: {
       duration: .7,
       ease: "backOut",
-      delay: index * .05
+      delay: index * .06
     },
   }
 }
-
-
 
 const AnimatedHeader = ({ children, split = "word", level = 2, initial, animate }: AnimatedHeaderProps) => {
   const { locale } = useRouter()
@@ -51,7 +49,7 @@ const AnimatedHeader = ({ children, split = "word", level = 2, initial, animate 
           <motion.span {...(split == "word" ? animateProps(initial, animate, index) : {})}>
             {split == "word" ? word : word.split("").map((letter) => {
               letterIndex++
-              return <motion.span {...animateProps(initial, animate, letterIndex)} key={word + letter + letterIndex}>
+              return <motion.span {...animateProps(initial, animate, letterIndex)} key={word + letter + (letterIndex - 1)}>
                 {letter}
               </motion.span>
             })}
