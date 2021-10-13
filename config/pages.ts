@@ -8,6 +8,7 @@ export type Page = {
   color: string,
   backgroundColor: string,
   primaryColor: string,
+  primaryBackgroundColor?: string,
   name: Locales
   inMenu: Boolean
 }
