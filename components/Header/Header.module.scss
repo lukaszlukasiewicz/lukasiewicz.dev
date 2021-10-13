@@ -7,21 +7,19 @@
   max-width: 100%;
   justify-content: center;
   min-width: 0;
-  padding:2em 0;
+  padding:3em 0 2em 0;
   position:relative;
 
   > div {
     min-width: 0;
-    overflow:hidden;
   }
   h1 {
-    font-size:clamp(7em,27vw,50em);
+    font-size:clamp(7em,27vmax,50em);
+    font-size:15vw;
     user-select: none;
-    line-height:1;
-    margin:.2em 0;
-    @media (min-width:500px) {
-      white-space: nowrap;
-    }
+    line-height:1.1;
+    position: relative;
+    margin:.1em 0 .1em 0;
     span {
       display:inline-block;
     }
@@ -31,6 +29,7 @@
     margin:0 auto 1em auto;
     font-size:1.2em;
     line-height:1.6;
+    position: relative;
     padding:0 1em;
     color:var(--page-color);
     @media screen and (max-widtH:40em) {
