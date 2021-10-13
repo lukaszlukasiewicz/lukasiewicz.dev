@@ -1,25 +1,22 @@
 .SocialMedia {
-  padding:4vmax 1em;
   min-height:50vh;
-  display:grid;
   align-items: center;
   background-color: var(--page-color);
   color:var(--page-background-color);
-  > div {
-    max-width: 40em;
-    margin:0 auto;
-    text-align:center;
-
+  overflow-x: hidden;
+  .SocialMedia__Container {
+    display:grid;
+    align-items:flex-start;
+    @media (min-width:700px) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
   h2 {
-    margin:0;
-    font-weight:300;
-    padding:0 1em;
-    font-size:clamp(2em, 1em + 2vmax, 3em);
+    margin:.2em 0;
+    color:var(--page-background-color);
   }
   p {
     max-width:30em;
-    margin:1em auto;
   }
   a {
     position:relative;
@@ -30,21 +27,31 @@
     display:block;
     margin:0 auto;
     position:relative;
+    border-bottom:solid 1px #fff2;
+    display:flex;
+    align-items: center;
+    span {
+      flex-grow: 1;
+    }
+    svg {
+      font-size:.7em;
+      opacity:0;
+      transform:translateX(-2em)
+    }
     * {
       fill:var(--page-background-color);
-      transition:fill .3s;
+      transition:all .3s;
     }
     &:hover {
-      * {
-        fill:var(--page-primary-color);
+      color:var(--page-primary-color);
+      svg {
+        * {
+          fill:var(--page-primary-color);
+        }
+        font-size:.7em;
+        opacity:1;
+        transform:translateX(0)
       }
     }
-  }
-
-  .SocailMedia__wrapper {
-    gap:4vmax;
-    display:flex;
-    margin-top:2vmax;
-    justify-content: center;
   }
 }
