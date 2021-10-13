@@ -4,7 +4,7 @@ body {
   scroll-behavior: smooth;
   margin: 0;
   color:#666;
-  font-family: Segoe UI, Roboto, Oxygen,
+  font-family: 'Fira Sans', Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 body {
@@ -12,11 +12,6 @@ body {
   @media screen and (min-width:500px) {
     font-size: 1.1em;
   }
-}
-
-#__next {
-
-  overflow-y: auto;
 }
 
 a {
@@ -31,6 +26,9 @@ a {
 .home-page header h1 {
   font-size:25vw;
   margin-top:0;
+}
+p {
+  line-height:1.8;
 }
 
 .contact-page-pl header h1 {
@@ -47,7 +45,7 @@ a {
     font-size:20vw
   }
   .about-page-en header h1 , .contact-page-en header h1 {
-    font-size:28vw;
+    font-size:25vw;
     line-height:.9
   }
   .home-page header h1 {
