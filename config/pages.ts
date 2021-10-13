@@ -8,7 +8,6 @@ export type Page = {
   color: string,
   backgroundColor: string,
   primaryColor: string,
-  primaryBackgroundColor?: string
   name: Locales
   inMenu: Boolean
 }
@@ -37,7 +36,7 @@ export const pages: Pages = {
     },
     color: "#111625",
     backgroundColor: "#FE4365",
-    primaryColor: "#E4F5B1",
+    primaryColor: "#F0F2EB",
     inMenu: true,
   },
   contact: {
