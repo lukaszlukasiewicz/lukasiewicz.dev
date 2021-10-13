@@ -1,10 +1,10 @@
 .SocialMedia {
   padding:4vmax 1em;
-  min-height:60vh;
+  min-height:50vh;
   display:grid;
   align-items: center;
-  background-color: var(--page-primary-color);
-  color:var(--page-color);
+  background-color: var(--page-color);
+  color:var(--page-background-color);
   > div {
     max-width: 40em;
     margin:0 auto;
@@ -30,6 +30,15 @@
     display:block;
     margin:0 auto;
     position:relative;
+    * {
+      fill:var(--page-background-color);
+      transition:fill .3s;
+    }
+    &:hover {
+      * {
+        fill:var(--page-primary-color);
+      }
+    }
   }
 
   .SocailMedia__wrapper {
