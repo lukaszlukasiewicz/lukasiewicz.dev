@@ -2,8 +2,9 @@
   > div {
     max-width:80em;
     margin:0 auto;
-    padding: 4vmax 0;
+    padding: 2vmax 0;
     display:flex;
+    position:relative;
     > * {
       flex-grow: 0;
       padding: 0 1em;
@@ -19,18 +20,21 @@
       }
 
     }
-  }
-  .HR {
-    flex-grow:1;
     &:before {
       content:"";
       opacity:.2;
-      margin-top:.5em;
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
       display:block;
       border-top:1px solid var(--page-background-color);
       width:100%;
-
+      border-top:1px solid var(--page-background-color);
     }
+  }
+  .HR {
+    flex-grow:1;
   }
 }
 
