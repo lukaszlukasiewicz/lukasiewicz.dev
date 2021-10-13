@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Styles from './Menu.module.scss'
 import { pages as pagesConfig } from 'config/pages'
 import usePageConfig from 'hooks/usePageConfig'
+import { motion } from 'framer-motion'
 
 
 export const Logo = ({ fill = "" }: { fill?: string }) => {
@@ -23,7 +24,7 @@ const Menu = () => {
   const pages = Object.values(pagesConfig);
   const currentPage = usePageConfig()
   const currentLocale = (locale ?? "en") as keyof typeof currentPage.name
-  return <nav className={Styles.Menu}>
+  return <motion.nav initial={{ y: "-4em" }} animate={{ y: 0, transition: { delay: .5, type: "spring" } }} className={Styles.Menu}>
     <style>
       {`.${Styles.Menu} {
         --page-color: ${currentPage.color};
@@ -48,7 +49,7 @@ const Menu = () => {
         <a className={`${Styles.Menu__link} ${Styles.Menu__locale}`}>{lc}</a>
       </Link>)}
     </div>
-  </nav>
+  </motion.nav>
 }
 
 export default Menu
