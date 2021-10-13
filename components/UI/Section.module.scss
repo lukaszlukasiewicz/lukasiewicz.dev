@@ -3,27 +3,11 @@
 }
 
 .Container {
-  display:grid;
   align-items: center;
   padding:4vw 2em;
-  gap:4vw;
   max-width: 80em;
   margin:0 auto;
   > *:first-child {
     margin-top:0;
-  }
-  @media screen and (min-width:60em) {
-    grid-template-columns: 1fr 1fr;
-    h1 {
-      font-size:3em;
-    }
-  }
-
-  h1 {
-    font-size:4em;
-    text-transform: uppercase;
-    color:var(--page-color);
-    font-weight:900;
-    line-height: 1;
   }
 }

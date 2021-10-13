@@ -7,7 +7,7 @@ const sectionVariants = {
   visible: {}
 }
 
-const Section: React.FC<{ columns?: number }> = ({ children, columns }) => {
+const Section: React.FC<{ className?: string, containerClassName?: string }> = ({ className = "", containerClassName = "", children }) => {
 
   const controls = useAnimation()
   const sectionRef = useRef<HTMLElement>(null)
@@ -38,8 +38,9 @@ const Section: React.FC<{ columns?: number }> = ({ children, columns }) => {
 
   }, [controls])
 
-  return <motion.section className={Styles.Section} ref={sectionRef} initial="hidden" variants={sectionVariants} animate={controls}>
-    <div className={Styles.Container} style={{ gridTemplateColumns: columns }}>
+
+  return <motion.section className={[Styles.Section, className].join(' ')} ref={sectionRef} initial="hidden" variants={sectionVariants} animate={controls}>
+    <div className={[Styles.Container, containerClassName].join(" ")} >
       {children}
     </div>
   </motion.section>
