@@ -4,10 +4,13 @@
 
 .Container {
   align-items: center;
-  padding:4vw 2em;
+  padding:2vw 1em;
   max-width: 80em;
   margin:0 auto;
   > *:first-child {
     margin-top:0;
+  }
+  @media (min-width:700px) {
+    padding:4vw 1em;
   }
 }

@@ -1,6 +1,7 @@
 import { motion, useAnimation } from "framer-motion"
 import { useEffect, useRef } from "react"
 import Styles from './Section.module.scss'
+import useIntersectionObserver from "hooks/useIntersectionObserver"
 
 const sectionVariants = {
   hidden: {},
@@ -11,32 +12,15 @@ const Section: React.FC<{ className?: string, containerClassName?: string }> = (
 
   const controls = useAnimation()
   const sectionRef = useRef<HTMLElement>(null)
+  const [observe, unObserve] = useIntersectionObserver()
   useEffect(() => {
-
-    let options = {
-      rootMargin: "40px",
-      threshold: 0.5
-    }
-
-    const observerCb = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          controls.start("visible")
-        } else {
-          controls.start("hidden")
-        }
-      })
-    }
-
-
-    let observer = new IntersectionObserver(observerCb, options);
-    if (sectionRef.current) observer.observe(sectionRef.current)
     const current = sectionRef.current
+    if (current) observe(current, () => controls.start("visible"), () => controls.start("hidden"))
     return () => {
-      if (current) observer.unobserve(current)
+      if (current) unObserve(current)
     }
 
-  }, [controls])
+  }, [observe, unObserve, controls])
 
 
   return <motion.section className={[Styles.Section, className].join(' ')} ref={sectionRef} initial="hidden" variants={sectionVariants} animate={controls}>

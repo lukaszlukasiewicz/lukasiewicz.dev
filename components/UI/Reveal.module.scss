@@ -1,0 +1,16 @@
+.Reveal {
+  position:relative;
+  width:fit-content;
+  overflow:hidden;
+  transform-origin: top left;
+}
+.Reveal__cover {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  transform-origin: top left;
+  z-index:2;
+  background:var(--page-primary-color);
+}
