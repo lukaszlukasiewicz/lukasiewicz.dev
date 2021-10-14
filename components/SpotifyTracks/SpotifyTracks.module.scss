@@ -1,0 +1,35 @@
+.SpotifyTracks {
+  display:grid;
+  gap:4vw;
+  padding:4em 0;
+  justify-content: center;
+  @media (min-width:1200px) {
+    padding:8em 0;
+    grid-template-columns: 1fr 1fr;
+    gap:20vw;
+    .SpotifyTracks__link {
+      display:block;
+      &:nth-child(even) 
+      {
+        transform:translateY(50%)
+      }
+    }
+  }
+  @media (min-width:1600px) {
+    gap:8vw;
+    .SpotifyTracks__link {
+      display:block;
+      &:nth-child(even) 
+      {
+        transform:translateY(60%)
+      }
+    }
+  }
+  .SpotifyTracks__link {
+    max-width:500px;
+    margin:0 auto;
+    img {display:block}
+    display:block;
+
+  }
+}
