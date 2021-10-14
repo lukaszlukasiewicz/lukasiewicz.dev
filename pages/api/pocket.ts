@@ -22,7 +22,8 @@ const updatePocketPosts = async (posts: string[]) => {
       "consumer_key": process.env.POCKET_CONSUMER_KEY,
       "access_token": process.env.POCKET_ACCESS_TOKEN,
       "tag": "reading",
-      "count": 5
+      "sort": "newest",
+      "count": 4
     })
   })
   const pocketJson = await pocketData.json()

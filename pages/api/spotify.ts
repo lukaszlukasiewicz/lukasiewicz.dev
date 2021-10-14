@@ -21,7 +21,7 @@ const updateSpotify = async () => {
   const credentials = await spotifyApi.clientCredentialsGrant()
   spotifyApi.setAccessToken(credentials.body['access_token']);
   const playlistData = await spotifyApi.getPlaylist('1EH2HcV2BF8SjiHshYEAF5?si=6361a2f742eb4deb')
-  const tracks = playlistData.body.tracks.items.reverse().slice(0, 5).map(({ track }: any) => {
+  const tracks = playlistData.body.tracks.items.reverse().slice(0, 4).map(({ track }: any) => {
     return {
       album: track.album.name,
       covers: track.album.images[0],
