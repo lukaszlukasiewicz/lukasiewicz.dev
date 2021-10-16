@@ -21,7 +21,7 @@ const socials = [
   },
   {
     name: "Facebook",
-    url: "https://www.linkedin.com/in/llukasiewicz/",
+    url: "https://www.facebook.com/lukasz.lukasiewicz/",
     icon: FaFacebook
   },
   {
