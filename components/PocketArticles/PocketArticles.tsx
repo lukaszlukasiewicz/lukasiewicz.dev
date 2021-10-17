@@ -7,14 +7,14 @@ import useIntersectionObserver from "hooks/useIntersectionObserver";
 
 const getArticleVariants = (index: number) => {
   return {
-    visible: { y: 0, opacity: 1, transition: { type: "spring", delay: index * .3 } },
+    visible: { y: 0, opacity: 1, transition: { type: "spring", delay: .5 + index * .3 } },
     hidden: { y: "2em", opacity: 0 }
   }
 }
 
 const buttonVariants = (index: number) => {
   return {
-    visible: { x: 0, opacity: 1, transition: { type: "spring", delay: .5 + index * .3 } },
+    visible: { x: 0, opacity: 1, transition: { type: "spring", delay: 1 + index * .3 } },
     hidden: { x: "2em", opacity: 0 }
   }
 }
@@ -43,7 +43,7 @@ const PocketArticles = () => {
 
   useEffect(() => {
     const { current } = ref
-    if (current) observe(current, () => { controls.start("visible") }, () => { controls.start("hidden") })
+    if (current) observe(current, () => { controls.start("visible") }, (entry: IntersectionObserverEntry) => { console.log(entry); if (entry.boundingClientRect.top > 0) controls.start("hidden") })
     return () => {
       if (current) unobserve(current)
     }
@@ -58,7 +58,7 @@ const PocketArticles = () => {
           <p>{excerpt}</p>
         </div>
         <motion.div variants={buttonVariants(index)}>
-          <DefaultButton buttonSize="medium">Read</DefaultButton>
+          <DefaultButton href={url}>Read</DefaultButton>
         </motion.div>
       </motion.div>
     })}
