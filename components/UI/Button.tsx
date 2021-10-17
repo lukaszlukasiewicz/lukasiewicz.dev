@@ -1,42 +1,41 @@
-import usePageConfig from "hooks/usePageConfig"
-import { useEffect, useMemo, useRef } from "react"
 import Styles from './Button.module.scss'
-import { Page } from "config/pages"
 
 type ButtonProps = {
   color?: string,
   backgroundColor?: string,
-  buttonSize: string,
+  buttonSize?: string,
+  type?: "button" | "submit" | "reset",
+  className?: string,
+  href?: string,
 }
 
-export const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({ children, type, color = "#000", buttonSize, backgroundColor = "#444", ...rest }) => {
-  return <button className={`${Styles.Button} ${buttonSize && Styles['Button__' + buttonSize]}`} {...rest} style={{ color, backgroundColor }}>
+
+export const Button: React.FC<ButtonProps> = ({ children, className, type, href, color = "", buttonSize, backgroundColor = "", ...rest }) => {
+
+  if (href) return <a href={href} className={[Styles.Button, buttonSize && Styles['Button__' + buttonSize], className].join(" ")} {...rest} style={{ color, backgroundColor }}>
+    {children}
+  </a>
+  return <button type={type} className={[Styles.Button, buttonSize && Styles['Button__' + buttonSize], className].join(" ")} {...rest} style={{ color, backgroundColor }}>
     {children}
   </button>
 }
 
 
-export const DefaultButton: React.FC<React.HTMLProps<HTMLButtonElement> & ButtonProps> = ({ children, ...rest }) => {
-  const page = useRef(usePageConfig());
-  const { color, backgroundColor } = page.current;
-  return <Button color={backgroundColor} backgroundColor={color} {...rest}>
+export const DefaultButton: React.FC<ButtonProps> = ({ children, className = "", ...rest }) => {
+  return <Button className={[Styles.Button__default, className].join(" ")} {...rest}>
     {children}
   </Button>
 }
 
 
-export const NegativeButton: React.FC<React.HTMLProps<HTMLButtonElement> & ButtonProps> = ({ children, ...rest }) => {
-  const page = useRef(usePageConfig());
-  const { color, backgroundColor } = page.current;
-  return <Button color={color} backgroundColor={backgroundColor} {...rest}>
+export const NegativeButton: React.FC<ButtonProps> = ({ children, className = "", ...rest }) => {
+  return <Button className={[Styles.Button__negative, className].join(" ")} {...rest}>
     {children}
   </Button>
 }
 
-export const PrimaryButton: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({ children, ...rest }) => {
-  const page = useRef(usePageConfig());
-  const { primaryColor, primaryBackgroundColor } = page.current;
-  return <Button color={primaryBackgroundColor} backgroundColor={primaryBackgroundColor ?? primaryColor} {...rest}>
+export const PrimaryButton: React.FC<ButtonProps> = ({ children, className = "", ...rest }) => {
+  return <Button className={[Styles.Button__primary, className].join(" ")} {...rest}>
     {children}
   </Button>
 }

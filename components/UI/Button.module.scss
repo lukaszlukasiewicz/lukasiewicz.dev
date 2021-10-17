@@ -2,13 +2,50 @@
   border:0;
   padding:1em 2em;
   border-radius:20em;
-  text-transform: uppercase;
   letter-spacing: .2em;
   cursor: pointer;
+  transition:all .3s;
   &.Button__big {
     font-size:1.2em;
   }
   &.Button__medium {
     font-size:1em;
+  }
+}
+
+.Button__default {
+  color:var(--page-color);
+  background-color: var(--page-background-color);
+  &:hover {
+    color:var(--page-background-color);
+    background-color: var(--page-color);
+  }
+}
+
+.Button__negative {
+  color:var(--page-background-color);
+  background-color: var(--page-color);
+  &:hover {
+    color:var(--page-color);
+    background-color: var(--page-background-color);
+  }
+}
+
+.Button__primary {
+  color:var(--page-color);
+  background-color: var(--page-primary-color);
+  &:hover {
+    color:var(--page-primary-color);
+    background-color: var(--page-color);
+  }
+}
+
+
+.Button__primaryNegative {
+  color:vvar(--page-primary-color);
+  background-color: ar(--page-color);
+  &:hover {
+    color:var(--page-color);
+    background-color: var(--page-primary-color);
   }
 }
