@@ -15,7 +15,7 @@ const Section: React.FC<{ className?: string, containerClassName?: string }> = (
   const [observe, unObserve] = useIntersectionObserver()
   useEffect(() => {
     const current = sectionRef.current
-    if (current) observe(current, () => controls.start("visible"), () => controls.start("hidden"))
+    if (current) observe(current, () => controls.start("visible"), (entry: IntersectionObserverEntry) => { console.log(entry); if (entry.boundingClientRect.top > 0) controls.start("hidden") })
     return () => {
       if (current) unObserve(current)
     }
