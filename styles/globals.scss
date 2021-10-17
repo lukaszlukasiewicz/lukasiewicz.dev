@@ -9,7 +9,8 @@ body {
 }
 body {
   overflow-y: scroll;
-  @media screen and (min-width:500px) {
+  overflow-x: hidden;
+  @media screen and (min-width:1000px) {
     font-size: 1.1em;
   }
 }
@@ -27,8 +28,19 @@ a {
   font-size:25vw;
   margin-top:0;
 }
+
+h2 {
+  font-size:clamp(2em, 1em + 2vmax, 4em);
+  font-weight: 500;
+  color:var(--page-color);
+}
+
 p {
   line-height:1.8;
+}
+
+img {
+  max-width:100%;
 }
 
 .contact-page-pl header h1 {
@@ -45,7 +57,7 @@ p {
     font-size:20vw
   }
   .about-page-en header h1 , .contact-page-en header h1 {
-    font-size:25vw;
+    font-size:20vw;
     line-height:.9
   }
   .home-page header h1 {
