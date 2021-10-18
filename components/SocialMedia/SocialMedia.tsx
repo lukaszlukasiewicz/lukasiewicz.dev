@@ -1,6 +1,5 @@
 import React, { useRef } from "react"
 import { FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa"
-import usePageConfig from "hooks/usePageConfig"
 import Styles from './SocialMedia.module.scss'
 import AnimatedHeader from "components/AnimatedHeader/AnimatedHeader"
 import Section from "components/UI/Section"
@@ -46,7 +45,6 @@ const SocialMedia = () => {
 
   const { pathname } = useRouter();
   const currentPage = useRef(pathname.replace("/", ""))
-  const page = usePageConfig(currentPage.current)
   return <Section className={Styles.SocialMedia} containerClassName={Styles.SocialMedia__Container}>
     <div>
       <AnimatedHeader level={2}>I&apos;m on the web</AnimatedHeader>
@@ -54,7 +52,6 @@ const SocialMedia = () => {
     </div>
     <div className={Styles.SocailMedia__wrapper}>
       {socials.map((social, index) => {
-        const Icon = social.icon
         return <div key={social.name}>
           <motion.a href={social.url} className={Styles.SocialMedia__Icon} variants={getIconVariants(index)} >
             <span>{social.name}</span>
