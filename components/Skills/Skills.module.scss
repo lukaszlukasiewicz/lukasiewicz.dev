@@ -24,7 +24,7 @@
 }
 
 .SkillsTab {
-  font-size: 2.5em;
+  font-size: clamp(1.2em, 1.5em + 1vw, 4em);
   span {
     opacity:.2;
   }
