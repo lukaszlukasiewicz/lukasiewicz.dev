@@ -4,6 +4,7 @@ import Styles from './PocketArticles.module.scss'
 import { DefaultButton, NegativeButton, PrimaryButton } from "components/UI/Button";
 import { motion, useAnimation } from "framer-motion";
 import useIntersectionObserver from "hooks/useIntersectionObserver";
+import AnimateInView from "components/AnimateInView/AnimateInView";
 
 const getArticleVariants = (index: number) => {
   return {
@@ -31,9 +32,6 @@ const trimTitle = (title: string) => {
 
 const PocketArticles = () => {
   const { locale } = useRouter();
-  const controls = useAnimation();
-  const [observe, unobserve] = useIntersectionObserver()
-  const ref = useRef(null)
   const [articles, setArticles] = useState<{ [key: string]: any }[] | null>([])
   useEffect(() => {
     fetch('/api/pocket')
@@ -41,18 +39,11 @@ const PocketArticles = () => {
       .then(json => setArticles(json.posts))
   }, [locale])
 
-  useEffect(() => {
-    const { current } = ref
-    if (current) observe(current, () => { controls.start("visible") }, (entry: IntersectionObserverEntry) => { console.log(entry); if (entry.boundingClientRect.top > 0) controls.start("hidden") })
-    return () => {
-      if (current) unobserve(current)
-    }
-  }, [observe, unobserve, controls])
 
-  return <div ref={ref} className={Styles.PocketArticles}>
+  return <AnimateInView className={Styles.PocketArticles}>
     {articles && articles.map((article, index) => {
       const { item_id: id, top_image_url: image, resolved_url: url, resolved_title: title, excerpt } = article
-      return <motion.div variants={getArticleVariants(index)} animate={controls} key={id}>
+      return <motion.div variants={getArticleVariants(index)} key={id}>
         <div>
           <h3>{trimTitle(title)}</h3>
           <p>{excerpt}</p>
@@ -62,7 +53,7 @@ const PocketArticles = () => {
         </motion.div>
       </motion.div>
     })}
-  </div>
+  </AnimateInView>
 }
 
 export default PocketArticles
