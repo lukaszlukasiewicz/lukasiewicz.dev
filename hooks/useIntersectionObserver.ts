@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
 let options = {
-  rootMargin: "40px",
-  threshold: 0.2
+  rootMargin: "0px 0px -20% 0px",
+  threshold: 0
 }
 
 let observer: IntersectionObserver | null = null
@@ -22,7 +22,7 @@ const useIntersectionObserver = (): returnType => {
 
   useEffect(() => {
     observer = new IntersectionObserver(observerCb, options);
-  })
+  }, [])
   const observe = (element: HTMLElement, inCb?: (entry: IntersectionObserverEntry) => void, outCb?: (entry: IntersectionObserverEntry) => void) => {
     observervables.set(element, { inCb, outCb })
     observer!.observe(element)
