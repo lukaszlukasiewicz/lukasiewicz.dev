@@ -11,6 +11,10 @@
   &.Button__medium {
     font-size:1em;
   }
+  &:disabled, &.Button__disabled {
+    opacity:.4;
+    pointer-events: none;
+  }
 }
 
 .Button__default {

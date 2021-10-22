@@ -7,15 +7,16 @@ type ButtonProps = {
   type?: "button" | "submit" | "reset",
   className?: string,
   href?: string,
+  disabled?: boolean,
 }
 
 
-export const Button: React.FC<ButtonProps> = ({ children, className, type, href, color = "", buttonSize, backgroundColor = "", ...rest }) => {
+export const Button: React.FC<ButtonProps> = ({ children, className, type, href, color = "", buttonSize, backgroundColor = "", disabled = false, ...rest }) => {
 
-  if (href) return <a href={href} className={[Styles.Button, buttonSize && Styles['Button__' + buttonSize], className].join(" ")} {...rest} style={{ color, backgroundColor }}>
+  if (href) return <a href={href} className={[Styles.Button, buttonSize && Styles['Button__' + buttonSize], className, disabled && Styles.Button__disabled].join(" ")} {...rest} style={{ color, backgroundColor }}>
     {children}
   </a>
-  return <button type={type} className={[Styles.Button, buttonSize && Styles['Button__' + buttonSize], className].join(" ")} {...rest} style={{ color, backgroundColor }}>
+  return <button type={type} disabled={disabled} className={[Styles.Button, buttonSize && Styles['Button__' + buttonSize], className].join(" ")} {...rest} style={{ color, backgroundColor }}>
     {children}
   </button>
 }
