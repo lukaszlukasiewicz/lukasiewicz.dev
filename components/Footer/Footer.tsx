@@ -8,7 +8,7 @@ import { useRef } from "react"
 
 const Footer = () => {
 
-  const { pathname, locale, locales } = useRouter()
+  const { pathname, locale } = useRouter()
   const currentPage = useRef(pathname.replace("/", ""))
   const page = usePageConfig(currentPage.current)
   const { backgroundColor, color, primaryColor } = page;
@@ -22,7 +22,7 @@ const Footer = () => {
         --page-primary-color: ${primaryColor};
       }`}
     </style>
-    <div className={Styles.Footer} style={{ backgroundColor: color }}>
+    <div className={Styles.Footer}>
       <div>
         <div>
           <Link scroll={false} href="/">
