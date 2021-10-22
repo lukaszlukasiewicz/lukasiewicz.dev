@@ -39,10 +39,10 @@ const Skils = () => {
     {!isMobile && <>
       <div>
         <motion.div variants={getLinkVariants(1)}>
-          <a href="#" className={show == "design" ? Styles.Tab__active : ""} onClick={handleClick("design")}>Design</a>
+          <a href="#" data-cursor="design" className={show == "design" ? Styles.Tab__active : ""} onClick={handleClick("design")}>Design</a>
         </motion.div>
         <motion.div variants={getLinkVariants(2)}>
-          <a href="#" className={show == "development" ? Styles.Tab__active : ""} onClick={handleClick("development")}>Development</a>
+          <a href="#" data-cursor="code" className={show == "development" ? Styles.Tab__active : ""} onClick={handleClick("development")}>Development</a>
         </motion.div>
       </div>
       <motion.div variants={tabsContainerVariants}>

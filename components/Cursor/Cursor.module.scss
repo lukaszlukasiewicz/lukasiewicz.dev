@@ -1,0 +1,78 @@
+.Cursor {
+  display:none;
+  @media (pointer: fine) {
+    position:absolute;
+    z-index:9999999;
+    display:block
+  }
+}
+
+.CursorContent {
+  transition:color .5s;
+}
+
+.DefaultCursor {
+  position:absolute;
+  width:.5em;
+  height:.5em;
+  border-radius:1em;
+  background-color: var(--page-color);
+}
+
+.ScrollCursor {
+  position:absolute;
+
+  .CursorContent {
+    font-size:2em;
+    color:var(--page-primary-color);
+  }
+}
+
+.LinkCursor, .CodeCursor, .DesignCursor, .MailCursor, .InputCursor {
+  position:absolute;
+  .CursorBg { 
+    background-color: var(--page-color);
+  }
+  .CursorContent {
+    font-size:2em;
+    color:#fff;
+  }
+}
+
+.MailCursor, .InputCursor {
+  .CursorBg { 
+    background-color: var(--page-primary-color);
+  }
+  .CursorContent {
+    font-size:2em;
+    color:var(--page-color);
+  }
+}
+
+
+.CodeCursor, .DesignCursor {
+  .CursorBg {
+    background-color: var(--page-background-color);
+  }
+}
+
+
+.CursorBg {
+  width:4em;
+  height:4em;
+  border-radius:100em;
+  background-color: var(--page-color);
+  mix-blend-mode: overlay;
+  position:relative;
+}
+
+.CursorContent {
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  heighT:100%;
+  align-items: center;
+  justify-content: center;
+  display:grid;
+}

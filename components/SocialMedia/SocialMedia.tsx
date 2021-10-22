@@ -53,7 +53,7 @@ const SocialMedia = () => {
     <div className={Styles.SocailMedia__wrapper}>
       {socials.map((social, index) => {
         return <div key={social.name}>
-          <motion.a href={social.url} className={Styles.SocialMedia__Icon} variants={getIconVariants(index)} >
+          <motion.a data-cursor="link;var(--page-background-color);var(--page-color)" href={social.url} className={Styles.SocialMedia__Icon} variants={getIconVariants(index)} >
             <span>{social.name}</span>
             <BsArrowRight />
           </motion.a>

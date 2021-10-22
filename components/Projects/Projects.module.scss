@@ -1,0 +1,15 @@
+.Projects {
+  display:grid;
+  gap: 4vw;
+  @media (min-width:1000px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  h3 {
+    font-weight: 300;
+    font-size:clamp(1.5em, 1em + 1vw, 3em)
+  }
+}
+
+.Projects__project_description {
+  padding:0 2em;
+}

@@ -42,7 +42,7 @@ const Track = ({ track }: { [key: string]: any }) => {
     variant = "rest"
     controls.start(variant)
   }
-  return <a onMouseOver={handleOver} onMouseLeave={handleLeave} href={track.url} className={Styles.SpotifyTracks__link}>
+  return <a onMouseOver={handleOver} data-cursor="link" onMouseLeave={handleLeave} href={track.url} className={Styles.SpotifyTracks__link}>
     <Reveal color="#1ed760">
       <motion.div variants={hoverVariants2} initial="rest" animate={controls} style={{
         mixBlendMode: "multiply", position: "absolute", top: 0, left: 0, width: "100% ", height: "100% ", backgroundColor: "#1ed760", borderRadius: "100% "
@@ -74,7 +74,7 @@ const SpotifyTracks = () => {
 
 
 
-  return <div data-cursor="test" className={Styles.SpotifyTracks}>
+  return <div className={Styles.SpotifyTracks}>
     {tracks.map((track: any) => {
       return <Track key={track.title} track={track} />
     })}

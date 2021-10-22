@@ -49,7 +49,7 @@ const PocketArticles = () => {
           <p>{excerpt}</p>
         </div>
         <motion.div variants={buttonVariants(index)}>
-          <DefaultButton href={url}>Read</DefaultButton>
+          <DefaultButton href={url} data-cursor="link;var(--page-background-color);var(--page-color)">Read</DefaultButton>
         </motion.div>
       </motion.div>
     })}
