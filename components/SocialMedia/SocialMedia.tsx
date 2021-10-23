@@ -6,6 +6,8 @@ import Section from "components/UI/Section"
 import { motion } from "framer-motion"
 import { useRouter } from "next/router"
 import { BsArrowRight } from "react-icons/bs"
+import Header from "components/Header/Header"
+import useI18nContent from "hooks/useI18nContent"
 
 const socials = [
   {
@@ -41,14 +43,24 @@ const paragraphVariants = {
   hidden: { y: "2em", opacity: 0 }
 }
 
+const localeContent = {
+  en: {
+    header: "I'm on the web",
+    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis laudantium eveniet enim nisi natus maiores.",
+  },
+  pl: {
+    header: "[pl]I'm on the web",
+    text: "[pl]Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis laudantium eveniet enim nisi natus maiores.",
+  },
+}
+
 const SocialMedia = () => {
 
-  const { pathname } = useRouter();
-  const currentPage = useRef(pathname.replace("/", ""))
+  const { header, text } = useI18nContent(localeContent)
   return <Section className={Styles.SocialMedia} containerClassName={Styles.SocialMedia__Container}>
     <div>
-      <AnimatedHeader level={2}>I&apos;m on the web</AnimatedHeader>
-      <motion.p variants={paragraphVariants}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis laudantium eveniet enim nisi natus maiores.</motion.p>
+      <AnimatedHeader level={2}>{header}</AnimatedHeader>
+      <motion.p variants={paragraphVariants}>{text}</motion.p>
     </div>
     <div className={Styles.SocailMedia__wrapper}>
       {socials.map((social, index) => {

@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Styles from './PocketArticles.module.scss'
-import { DefaultButton, NegativeButton, PrimaryButton } from "components/UI/Button";
-import { motion, useAnimation } from "framer-motion";
-import useIntersectionObserver from "hooks/useIntersectionObserver";
+import { DefaultButton } from "components/UI/Button";
+import { motion } from "framer-motion";
 import AnimateInView from "components/AnimateInView/AnimateInView";
+import useI18nContent from "hooks/useI18nContent";
 
 const getArticleVariants = (index: number) => {
   return {
@@ -30,8 +30,19 @@ const trimTitle = (title: string) => {
   return titleArr.join(" ")
 }
 
+
+const localeContent = {
+  en: {
+    read: "Read"
+  },
+  pl: {
+    read: "Czytaj"
+  }
+}
+
 const PocketArticles = () => {
   const { locale } = useRouter();
+  const { read } = useI18nContent(localeContent)
   const [articles, setArticles] = useState<{ [key: string]: any }[] | null>([])
   useEffect(() => {
     fetch('/api/pocket')
@@ -49,7 +60,7 @@ const PocketArticles = () => {
           <p>{excerpt}</p>
         </div>
         <motion.div variants={buttonVariants(index)}>
-          <DefaultButton href={url} data-cursor="link;var(--page-background-color);var(--page-color)">Read</DefaultButton>
+          <DefaultButton href={url} data-cursor="link;var(--page-background-color);var(--page-color)">{read}</DefaultButton>
         </motion.div>
       </motion.div>
     })}

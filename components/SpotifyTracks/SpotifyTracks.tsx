@@ -3,6 +3,7 @@ import Reveal from "components/UI/Reveal";
 import Styles from "./SpotifyTracks.module.scss"
 import { motion, useAnimation } from "framer-motion";
 import { FaSpotify } from "react-icons/fa"
+import useI18nContent from "hooks/useI18nContent";
 
 const hoverVariants = {
   hover: { scale: 1.45, transition: { type: "spring", delay: .15 } },
@@ -28,8 +29,18 @@ const spotifyVariants = {
   rest: { y: "1em", opacity: 0, transition: { type: "tween" } }
 }
 
+const localeContent = {
+  en: {
+    listen: "Listen on"
+  },
+  pl: {
+    listen: "Słuchaj na"
+  }
+}
+
 const Track = ({ track }: { [key: string]: any }) => {
   const controls = useAnimation();
+  const { listen } = useI18nContent(localeContent)
   let variant = "rest"
   const handleOver = () => {
     if (variant == "hover") return
@@ -54,7 +65,7 @@ const Track = ({ track }: { [key: string]: any }) => {
             {track.title}
           </motion.h3>
           <motion.p variants={spotifyVariants} initial="rest" animate={controls}>
-            Listen on <FaSpotify color="#fff" className={Styles.SpotifyTracks_Icon} />
+            {listen} <FaSpotify color="#fff" className={Styles.SpotifyTracks_Icon} />
           </motion.p>
         </div>
       </div>

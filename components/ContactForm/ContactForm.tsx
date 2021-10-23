@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import React, { FormEvent, useState } from "react"
 import Styles from "./Contactform.module.scss"
 import { AnimatePresence, motion } from "framer-motion"
+import useI18nContent from "hooks/useI18nContent"
 
 const headerVariants = {
   visible: { y: 0, opacity: 1, transition: { type: "spring" } },
@@ -17,6 +18,26 @@ const formVariants = {
 const buttonVariants = {
   visible: { x: 0, opacity: 1, transition: { type: "spring", delay: 1 } },
   hidden: { x: "2em", opacity: 0 }
+}
+
+
+const localeContent = {
+  en: {
+    contactFormHeader: "Contact form",
+    submit: "Send",
+    sendingText: "Sending ...",
+    sentHeader: "Your message has been sent",
+    sentText: "I will get back to you as soon as I can. In the meantime, have a nice day",
+    errorMsg: "There was an error sending your message, try again later",
+  },
+  pl: {
+    contactFormHeader: "Formularz kontaktowy",
+    submit: "Wyślij",
+    sendingText: "Wysyłam ...",
+    sentHeader: "Twoja wiadomość została wysłana",
+    sentText: "Odezwę się tak szybko jak będę w stanie. W międzyczasie życzę Ci miłego dnia",
+    errorMsg: "Natriliśmy na błąd podczas wysyłania, spróbuj ponownie później",
+  }
 }
 
 const FormPl = () => {
@@ -123,6 +144,7 @@ const ContactForm = () => {
   const [mailSent, setMailSent] = useState(false)
   const [mailError, setMailError] = useState(false)
   const [sending, setSending] = useState(false)
+  const { contactFormHeader, submit, sendingText, sentHeader, sentText, errorMsg } = useI18nContent(localeContent)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -145,10 +167,8 @@ const ContactForm = () => {
   }
 
   return <div className={[Styles.ContactWrapper, Styles[`ContactWrapper-${locale}`]].join(" ")}>
-    <motion.h2 variants={headerVariants}>Contact form</motion.h2>
-    {
-      mailError && "There was an error sending your message, try again later"
-    }
+    <motion.h2 variants={headerVariants}>{contactFormHeader}</motion.h2>
+    {mailError && errorMsg}
     <AnimatePresence exitBeforeEnter={true}>
       {!mailSent && <motion.div variants={formVariants} initial="hidden" animate="visible" exit="hidden" key="form">
         <form onSubmit={handleSubmit}>
@@ -157,17 +177,17 @@ const ContactForm = () => {
               {(locale == 'pl') ? <FormPl /> : <FormEn />}
             </div>
             {sending && <div className={Styles.ContactForm__loader}>
-              <div><span></span> Sending ...</div>
+              <div><span></span>{sendingText}</div>
             </div>}
           </fieldset>
           <motion.div variants={buttonVariants} style={{ fontSize: ".8em" }}>
-            <PrimaryButton disabled={sending} data-cursor="mail" buttonSize="medium" type="submit">Wyślij</PrimaryButton>
+            <PrimaryButton disabled={sending} data-cursor="mail" buttonSize="medium" type="submit">{submit}</PrimaryButton>
           </motion.div>
         </form>
       </motion.div>}
       {mailSent && <motion.div variants={formVariants} initial="hidden" animate="visible" exit="hidden" key="thankyou">
-        <h2>Your message has been sent</h2>
-        <p>I will get back to you as soon as I can. In the meantime, have a nice day</p>
+        <h2>{sentHeader}</h2>
+        <p>{sentText}</p>
       </motion.div>}
     </AnimatePresence>
   </div>

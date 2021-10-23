@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Header, { SubHeader } from 'components/Header/Header'
+import Header from 'components/Header/Header'
 import { useRouter } from 'next/router'
 import usePageConfig from 'hooks/usePageConfig'
 import AnimatedHeader from 'components/AnimatedHeader/AnimatedHeader'
@@ -12,6 +12,7 @@ import Footer from 'components/Footer/Footer'
 import SocialMedia from 'components/SocialMedia/SocialMedia'
 import Section from 'components/UI/Section'
 import ContactForm from 'components/ContactForm/ContactForm'
+import useI18nContent from 'hooks/useI18nContent'
 
 const localeContent = {
   "en": {
@@ -20,7 +21,7 @@ const localeContent = {
   },
   "pl": {
     title: "Pogadajmy o rzeczach",
-    headerText: "In augue turpis, ultrices in leo sed, hendrerit hendrerit urna. Ut pretium dapibus lectus, quis euismod purus mattis eu. Sed fermentum laoreet facilisis."
+    headerText: "[pl]In augue turpis, ultrices in leo sed, hendrerit hendrerit urna. Ut pretium dapibus lectus, quis euismod purus mattis eu. Sed fermentum laoreet facilisis."
   }
 }
 
@@ -28,11 +29,9 @@ const Contact: NextPage = () => {
   const { locale } = useRouter();
   const page = usePageConfig("contact");
   const { backgroundColor, color } = page
-  const currentLocale: (keyof typeof localeContent) = (locale ?? "en") as keyof typeof localeContent
-  const { title, headerText } = localeContent[currentLocale]
+  const { title, headerText } = useI18nContent(localeContent)
   return (
     <>
-
       <BodyClass className={`contact-page contact-page-${locale}`} />
       <TransitionCover>
         <Head>
