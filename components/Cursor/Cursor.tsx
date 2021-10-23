@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import Styles from "./Cursor.module.scss"
-import { BsFillMouseFill, BsInputCursorText } from "react-icons/bs"
+import { BsMouse, BsInputCursorText } from "react-icons/bs"
 import { BiLink, BiCodeAlt, BiPencil } from "react-icons/bi"
 import { HiOutlineMail } from "react-icons/hi"
 import { MdOutlineWavingHand } from "react-icons/md"
@@ -31,7 +31,7 @@ const CursorBg: React.FC<CursorProps> = ({ className, children, color, bgColor }
 const DefaultCursor = (props: CursorProps) => <CursorBg className={Styles.DefaultCursor} bgColor={props.bgColor}></CursorBg>
 const ScrollCursor = (props: CursorProps) => <div className={Styles.ScrollCursor}>
   <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
-  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="scrollContent" style={{ color: props.color }}><BsFillMouseFill /> </motion.div>
+  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="scrollContent" style={{ color: props.color }}><BsMouse /> </motion.div>
 </div>
 
 const LinkCursor = (props: CursorProps) => <div className={Styles.LinkCursor}>
