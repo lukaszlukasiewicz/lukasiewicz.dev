@@ -24,9 +24,9 @@ const Footer = () => {
     </style>
     <div className={Styles.Footer}>
       <div>
-        <div>
+        <div className={Styles.Footer__logo}>
           <Link scroll={false} href="/">
-            <a style={{ fontSize: "1em", fontWeight: 400 }}><Logo />.dev</a>
+            <a><Logo />.dev</a>
           </Link>
         </div>
         <div className={Styles.HR}></div>

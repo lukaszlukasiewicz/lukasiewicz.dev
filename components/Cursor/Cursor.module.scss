@@ -1,5 +1,8 @@
 .Cursor {
   display:none;
+  position: "absolute";
+  z-index: 999999999;
+  pointer-events: none;
   @media (pointer: fine) {
     position:absolute;
     z-index:9999999;

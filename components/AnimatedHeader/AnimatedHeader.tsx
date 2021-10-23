@@ -9,7 +9,8 @@ type AnimatedHeaderProps = {
   initial?: string,
   animate?: string,
   level?: number,
-  style?: React.CSSProperties
+  style?: React.CSSProperties,
+  className?: string
 }
 
 
@@ -38,12 +39,12 @@ const animateProps = (initial: string | undefined, animate: string | undefined, 
   }
 }
 
-const AnimatedHeader = ({ children, split = "word", level = 2, initial, animate, style }: AnimatedHeaderProps) => {
+const AnimatedHeader = ({ children, split = "word", level = 2, className = "", initial, animate, style }: AnimatedHeaderProps) => {
   const { locale } = useRouter()
   const words = children.trim().split(" ")
   let letterIndex = 0;
   const Header = `h${level}` as keyof JSX.IntrinsicElements;
-  return <Header className={Styles.AnimatedHeader} style={style}>
+  return <Header className={[Styles.AnimatedHeader, className].join(" ")} style={style}>
     {words.map((word, index) => {
       return <React.Fragment key={word + index}>
         <span>

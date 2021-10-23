@@ -3,10 +3,10 @@
   gap:4vw;
   padding:4em 0;
   justify-content: center;
-  @media (min-width:1200px) {
+  @media (min-width:800px) {
     padding:8em 0;
     grid-template-columns: 1fr 1fr;
-    gap:18vw;
+    gap:15vw;
     .SpotifyTracks__link {
       display:block;
       &:nth-child(even) 
@@ -31,5 +31,54 @@
     img {display:block}
     display:block;
 
+  }
+
+  .SpotifyTracks__cover,.SpotifyTracks__cover2 {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    background-color: #1ed760;
+    border-radius: 100%;
+  }
+  .SpotifyTracks__cover {
+    mix-blend-mode: multiply;
+  }
+
+
+  .SpotifyTracks_TrackInfo {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    display:grid;
+    align-items: center;
+    > div {
+      padding:1em;
+    }
+    h3 {
+      margin:0;
+      color:#fff;
+      font-size:3em;
+      text-align: center;
+      font-weight: 400;
+    }
+    h4 {
+      margin:0;
+      color:#fff;
+      font-size:1.5em;
+      text-align: center;
+      font-weight: 400;
+    }
+    p {
+      color:#fff;
+      text-align: center;
+      font-size:1.5em;
+    }
+    .SpotifyTracks_Icon {
+      vertical-align: middle;
+    }
   }
 }

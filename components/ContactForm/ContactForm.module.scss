@@ -2,6 +2,14 @@
   max-width: 67ch;
   margin:0 auto;
   font-size: clamp(1em, 1em + .5vw, 2.5em);
+  h2 {
+    flex-grow: 1;
+    width:100%;
+    font-size: 1em;
+    text-transform: uppercase;
+    margin:0;
+    color:#ddd;
+  }  
   &.ContactWrapper-pl {
     max-width:72ch;
   }

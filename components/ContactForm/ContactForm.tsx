@@ -145,7 +145,7 @@ const ContactForm = () => {
   }
 
   return <div className={[Styles.ContactWrapper, Styles[`ContactWrapper-${locale}`]].join(" ")}>
-    <motion.h2 variants={headerVariants} style={{ flexGrow: 1, width: "100%", fontSize: "1em", textTransform: "uppercase", margin: 0, color: "#ddd" }}>Contact form</motion.h2>
+    <motion.h2 variants={headerVariants}>Contact form</motion.h2>
     {
       mailError && "There was an error sending your message, try again later"
     }

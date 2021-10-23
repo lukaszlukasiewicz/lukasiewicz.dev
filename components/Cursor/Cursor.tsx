@@ -110,7 +110,7 @@ const Cursor: React.FC = () => {
   return <motion.div className={Styles.Cursor} animate={{
     x, y,
     transition: { type: "spring", damping: 15 }
-  }} style={{ position: "absolute", zIndex: 999999999, pointerEvents: "none" }}>
+  }}>
     <AnimatePresence>
       <CurrentCursor key={cursor} color={color} bgColor={bgColor} />
     </AnimatePresence>

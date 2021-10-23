@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 
 
 export const Logo = ({ fill = "" }: { fill?: string }) => {
-  return <svg width="100%" height="100%" viewBox="0 0 60 60" version="1.1" style={{ display: "inline-block", width: "2em", height: "1.6em", margin: "-.4em 0 -.2em 0", verticalAlign: "middle" }}>
+  return <svg width="100%" height="100%" viewBox="0 0 60 60" version="1.1" className={Styles.Menu__logoIcon}>
     <g transform="matrix(-0.967205,0,0,0.967205,58.0161,-0.173803)">
       <g transform="matrix(0.0386158,0,0,0.0386158,-10.6158,-8.35138)">
         <path d="M880.965,1219.91C866.558,1219.91 854.879,1208.23 854.879,1193.82C854.879,1099.36 854.879,768.609 854.879,537.446C854.878,406.995 749.127,301.244 618.677,301.244C618.664,301.244 618.652,301.244 618.639,301.244C488.189,301.244 382.438,406.995 382.438,537.445C382.438,789.858 382.438,1188.24 382.438,1444.9C382.438,1510.52 408.508,1573.46 454.914,1619.87C501.321,1666.28 564.261,1692.35 629.889,1692.35L1484.94,1692.35C1615.39,1692.35 1721.15,1586.6 1721.15,1456.14C1721.15,1456.13 1721.15,1456.12 1721.15,1456.11C1721.15,1325.66 1615.39,1219.91 1484.94,1219.91C1269.01,1219.91 970.102,1219.91 880.965,1219.91Z" style={{ fill }} />
@@ -33,9 +33,9 @@ const Menu = () => {
       }`}
     </style>
     <div style={{ color: currentPage?.color, borderBottomColor: currentPage?.color + "22" }}>
-      <div className={Styles.Menu__link}>
+      <div className={[Styles.Menu__link, Styles.Menu__logo].join(' ')}>
         <Link scroll={false} href="/">
-          <a style={{ fontSize: "1em", fontWeight: 400 }}><Logo fill={currentPage.color} />.dev</a>
+          <a><Logo fill={currentPage.color} />.dev</a>
         </Link>
       </div>
       {pages.filter(entry => !!entry.inMenu).map(entry => {
