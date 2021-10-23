@@ -59,6 +59,16 @@
   }
 }
 
+.WaveCursor {
+  .CursorContent > * {
+    animation: wave infinite 1s alternate ease-in-out;
+  }
+}
+
+@keyframes wave {
+  from { transform:rotate(30deg);}
+  to {transform:rotate(-30deg);}
+}
 
 .CursorBg {
   width:4em;
