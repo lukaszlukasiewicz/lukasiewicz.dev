@@ -4,6 +4,7 @@ import Styles from "./Cursor.module.scss"
 import { BsFillMouseFill, BsInputCursorText } from "react-icons/bs"
 import { BiLink, BiCodeAlt, BiPencil } from "react-icons/bi"
 import { HiOutlineMail } from "react-icons/hi"
+import { MdOutlineWavingHand } from "react-icons/md"
 
 const cursorVariants = {
   visible: { scale: 1, opacity: 1, transition: { type: "spring" } },
@@ -59,6 +60,12 @@ const InputCursor = (props: CursorProps) => <div className={Styles.InputCursor}>
   <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="linkContent" style={{ color: props.color }}><BsInputCursorText /> </motion.div>
 </div>
 
+
+const WaveCursor = (props: CursorProps) => <div className={Styles.WaveCursor}>
+  <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
+  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="linkContent" style={{ color: props.color }}><MdOutlineWavingHand /> </motion.div>
+</div>
+
 const cursors = {
   "default": DefaultCursor,
   "scroll": ScrollCursor,
@@ -67,6 +74,7 @@ const cursors = {
   design: DesignCursor,
   mail: MailCursor,
   input: InputCursor,
+  wave: WaveCursor
 }
 
 const Cursor: React.FC = () => {
