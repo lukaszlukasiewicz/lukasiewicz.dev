@@ -32,7 +32,9 @@ const Home: NextPage = () => {
           color,
           minHeight: "100vh"
         }}>
-          <AnimatedHeader initial="hidden" animate="visible" split="letter">Hi ;)</AnimatedHeader>
+          <div data-cursor="wave;var(--page-color);var(--page-background-color)">
+            <AnimatedHeader initial="hidden" level={1} animate="visible" split="letter">Hello :)</AnimatedHeader>
+          </div>
           <motion.div key={locale + "p"} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ type: "spring", delay: .3 }}>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus <FaGithub /> test ipsam delectus nobis soluta officia reprehenderit ducimus praesentium nesciunt rerum at est omnis, itaque velit libero optio amet vitae iure eligendi.<FaRegKissWinkHeart /></p>
           </motion.div>

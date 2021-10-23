@@ -8,14 +8,18 @@ import { motion } from 'framer-motion'
 import ScrollArrow from 'components/UI/ScrollArrow'
 import TransitionCover from 'components/TransitionCover/TransitionCover'
 import BodyClass from 'components/BodyClass/BodyClass'
+import Footer from 'components/Footer/Footer'
+import SocialMedia from 'components/SocialMedia/SocialMedia'
+import Section from 'components/UI/Section'
+import ContactForm from 'components/ContactForm/ContactForm'
 
 const localeContent = {
   "en": {
-    title: "Let's talk",
+    title: "Let's talk about things",
     headerText: "Vivamus nec erat mollis, faucibus nisl tincidunt, mattis tortor. Ut et imperdiet quam, sed tempus ipsum. Nam euismod eros ut feugiat congue."
   },
   "pl": {
-    title: "Napisz do mnie",
+    title: "Pogadajmy o rzeczach",
     headerText: "In augue turpis, ultrices in leo sed, hendrerit hendrerit urna. Ut pretium dapibus lectus, quis euismod purus mattis eu. Sed fermentum laoreet facilisis."
   }
 }
@@ -45,12 +49,21 @@ const Contact: NextPage = () => {
           backgroundColor,
           color
         }}>
-          <AnimatedHeader initial="hidden" animate="visible" split="letter">{title}</AnimatedHeader>
-          <motion.div key={locale} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ duration: 1, ease: "backOut" }}>
-            <SubHeader pageId="contact">{headerText}</SubHeader>
-          </motion.div>
-          <ScrollArrow />
+          <div data-cursor="scroll;var(--page-color);#fff">
+            <AnimatedHeader initial="hidden" level={1} animate="visible" split="letter">{title}</AnimatedHeader>
+            <motion.div key={locale} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ duration: 1, ease: "backOut", delay: 1 }}>
+              <p>{headerText}</p>
+            </motion.div>
+            <ScrollArrow />
+          </div>
         </Header>
+        <Section>
+          <ContactForm />
+        </Section>
+        <div data-cursor="default;#fff">
+          <SocialMedia />
+          <Footer />
+        </div>
       </TransitionCover>
     </>
 

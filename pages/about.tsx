@@ -5,30 +5,36 @@ import { useRouter } from 'next/router';
 import usePageConfig from 'hooks/usePageConfig';
 import AnimatedHeader from 'components/AnimatedHeader/AnimatedHeader';
 import { motion } from 'framer-motion';
-import { BsArrowDown } from 'react-icons/bs'
-import Section from 'components/UI/Section';
-import { NegativeButton } from 'components/UI/Button';
+import Footer from 'components/Footer/Footer';
 import TransitionCover from 'components/TransitionCover/TransitionCover';
 import BodyClass from "components/BodyClass/BodyClass"
 import ScrollArrow from 'components/UI/ScrollArrow';
+import SocialMedia from 'components/SocialMedia/SocialMedia';
+import Section from 'components/UI/Section';
+import Styles from './about.module.scss'
+import Reveal from 'components/UI/Reveal';
+import SpotifyTracks from 'components/SpotifyTracks/SpotifyTracks';
+import PocketArticles from 'components/PocketArticles/PocketArticles';
+import Skils from 'components/Skills/Skills';
+import useIntersectionObserver from 'hooks/useIntersectionObserver';
+import { useRef } from 'react';
+import AnimateInView from 'components/AnimateInView/AnimateInView';
+import Projects from 'components/Projects/Projects';
 
 const localeContent = {
   "en": {
-    title: "Get to know me",
+    title: "A little bit about me",
   },
   "pl": {
-    title: "Poznajmy się bliżej",
+    title: "Poznajmy się trochę bliżej",
   }
 }
 
-const paragraphVariants = {
-  visible: { y: 0, opacity: 1 },
-  hidden: { y: "3em", opacity: 0 }
-}
-
-const ButtonVariants = {
-  visible: { x: 0, opacity: 1 },
-  hidden: { x: "3em", opacity: 0 }
+const paragraphVariants = (visible = {}, hidden = {}) => {
+  return {
+    visible: Object.assign({ y: 0, opacity: 1, transition: { delay: .5, type: "spring" } }, visible),
+    hidden: Object.assign({ y: "4em", opacity: 0 }, hidden)
+  }
 }
 
 const About: NextPage = () => {
@@ -37,7 +43,6 @@ const About: NextPage = () => {
   const page = usePageConfig("about");
   const currentLocale: (keyof typeof localeContent) = (locale ?? "en") as keyof typeof localeContent
   const { title } = localeContent[currentLocale]
-
   return (
     <>
       <BodyClass className={`about-page about-page-${locale}`} />
@@ -55,30 +60,51 @@ const About: NextPage = () => {
         <Header key="heder_about" style={{
           backgroundColor: page.backgroundColor,
           color: page.color
-        }}>
-          <AnimatedHeader initial="hidden" animate="visible" split="letter">{title}</AnimatedHeader>
-          <motion.div key={locale + "p"} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ type: "spring", delay: .3 }}>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam delectus nobis soluta officia reprehenderit ducimus praesentium nesciunt rerum at est omnis, itaque velit libero optio amet vitae iure eligendi.</p>
-          </motion.div>
-          <ScrollArrow />
-        </Header>
-        <Section>
-          <div>
-            <AnimatedHeader>Conse ctetur adipis cing elit ads asdasd </AnimatedHeader>
-            <motion.p variants={paragraphVariants} transition={{ type: "spring", delay: .3 }}>
-              Lorem ipsum dolor sit amet. Vero sed molestiae, necessitatibus expedita consectetur enim est, amet dignissimos aperiam accusantium illo quasi ea minima rem, nulla eligendi nobis id maxime.
-            </motion.p>
-            <motion.div variants={ButtonVariants} transition={{ type: "spring", delay: .6 }} style={{ marginTop: '2em' }}>
-              <NegativeButton buttonSize="medium">Test</NegativeButton>
+        }}><div data-cursor="scroll;var(--page-color);#fff">
+            <AnimatedHeader initial="hidden" level={1} animate="visible" split="letter">{title}</AnimatedHeader>
+            <motion.div key={locale + "p"} initial={{ y: "-4em", opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: "8em", opacity: 0 }} transition={{ type: "spring", delay: 1 }}>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam delectus nobis soluta officia reprehenderit ducimus praesentium.</p>
             </motion.div>
+            <ScrollArrow />
           </div>
+        </Header>
+        <Section className={Styles.AboutSection} containerClassName={Styles.AboutSection__Container}>
           <div>
-            Test
+            <AnimatedHeader level={2}>
+              Ullam, commodi eveniet atque hic in non delectus!
+            </AnimatedHeader>
+            <motion.p variants={paragraphVariants()}>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores voluptas inventore dolorem quasi fugiat beatae quos fugit temporibus, amet porro voluptates tempore eligendi, dolorum culpa maiores, minus pariatur deserunt ab maxime voluptatibus quisquam! Adipisci, porro amet est odio laboriosam doloremque eveniet illo delectus atque vel rem nihil maiores debitis repellat odit, rerum praesentium omnis cum quidem aspernatur nobis.
+            </motion.p>
           </div>
         </Section>
+        <div data-cursor="default;#fff" className={Styles.WorkSection}>
+          <Section>
+            <h2 style={{ zIndex: 2, position: "sticky", top: "2rem", fontSize: "2rem", color: "#ddd", textTransform: "uppercase", margin: "2rem .5em 0 .5vw", width: "fit-content" }}>Work</h2>
+            <AnimatedHeader level={3} split="letter">What I do</AnimatedHeader>
+            <Skils />
+          </Section>
+        </div>
+        <Section className={Styles.ProjectsSection} containerClassName={Styles.ProjectsSection__wrapper}>
+          <Projects />
+        </Section>
+        <Section className={Styles.AfterWorkSection}>
+          <h2 style={{ zIndex: 2, position: "sticky", top: "2rem", fontSize: "2rem", color: "#ddd", textTransform: "uppercase", margin: "2rem .5em 0 1vw", width: "fit-content" }}>After work</h2>
+          <div>
+            <AnimatedHeader split="letter" level={3} className={Styles.AfterWorkSection__ReadingHeader}>Reading</AnimatedHeader>
+            <PocketArticles />
+          </div>
+          <AnimateInView>
+            <AnimatedHeader split="letter" level={3} className={Styles.AfterWorkSection__ListeningHeader} style={{ margin: 0, position: "sticky", top: "4rem", fontSize: "clamp(1em, 15vw, 15em)" }}>Listening</AnimatedHeader>
+            <SpotifyTracks />
+          </AnimateInView>
+        </Section>
+        <div data-cursor="default;#fff">
+          <SocialMedia />
+          <Footer />
+        </div>
       </TransitionCover>
     </>
-
   )
 }
 
