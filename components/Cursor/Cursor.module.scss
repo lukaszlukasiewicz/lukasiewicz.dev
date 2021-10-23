@@ -61,7 +61,7 @@
 
 .WaveCursor {
   .CursorContent > * {
-    animation: wave infinite 1s alternate ease-in-out;
+    animation: wave infinite .5s alternate ease-in-out;
   }
 }
 
