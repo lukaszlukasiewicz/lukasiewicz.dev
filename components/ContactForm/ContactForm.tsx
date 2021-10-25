@@ -1,7 +1,7 @@
 import { PrimaryButton } from "components/UI/Button"
 import { useRouter } from "next/router"
 import React, { FormEvent, useState } from "react"
-import Styles from "./Contactform.module.scss"
+import Styles from "./ContactForm.module.scss"
 import { AnimatePresence, motion } from "framer-motion"
 import useI18nContent from "hooks/useI18nContent"
 
@@ -35,7 +35,7 @@ const localeContent = {
     submit: "Wyślij",
     sendingText: "Wysyłam ...",
     sentHeader: "Twoja wiadomość została wysłana",
-    sentText: "Odezwę się tak szybko jak będę w stanie. W międzyczasie życzę Ci miłego dnia",
+    sentText: "Odezwę się tak szybko jak będę w stanie. W międzyczasie życzę miłego dnia",
     errorMsg: "Natriliśmy na błąd podczas wysyłania, spróbuj ponownie później",
   }
 }
@@ -167,10 +167,9 @@ const ContactForm = () => {
   }
 
   return <div className={[Styles.ContactWrapper, Styles[`ContactWrapper-${locale}`]].join(" ")}>
-    <motion.h2 variants={headerVariants}>{contactFormHeader}</motion.h2>
-    {mailError && errorMsg}
     <AnimatePresence exitBeforeEnter={true}>
       {!mailSent && <motion.div variants={formVariants} initial="hidden" animate="visible" exit="hidden" key="form">
+        <motion.h2 variants={headerVariants}>{contactFormHeader}</motion.h2>
         <form onSubmit={handleSubmit}>
           <fieldset disabled={sending}>
             <div className={Styles.ContactForm}>
@@ -180,6 +179,7 @@ const ContactForm = () => {
               <div><span></span>{sendingText}</div>
             </div>}
           </fieldset>
+          {mailError && errorMsg}
           <motion.div variants={buttonVariants} style={{ fontSize: ".8em" }}>
             <PrimaryButton disabled={sending} data-cursor="mail" buttonSize="medium" type="submit">{submit}</PrimaryButton>
           </motion.div>
