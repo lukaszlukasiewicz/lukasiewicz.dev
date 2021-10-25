@@ -22,7 +22,7 @@ const tabVariants = {
 }
 
 const design = <>Logo & Identity <span>{"//"}</span> Design Systems <span>{"//"}</span> UI & UX <span>{"//"}</span> Web Design <span>{"//"}</span> Print Design</>
-const development = <>HTML <span>{"//"}</span> CSS <span>{"//"}</span> SASS <span>{"//"}</span> Javascript <span>{"//"}</span> ES6 <span>{"//"}</span> TypeScript <span>{"//"}</span> React <span>{"//"}</span> Next.js <span>{"//"}</span> Strapi <span>{"//"}</span> Node.js <span>{"//"}</span> PHP <span>{"//"}</span> Wordpress</>
+const development = <>HTML <span>{"//"}</span> CSS <span>{"//"}</span> SASS <span>{"//"}</span> Javascript <span>{"//"}</span> TypeScript <span>{"//"}</span> React <span>{"//"}</span> Next.js <span>{"//"}</span> Strapi <span>{"//"}</span> Node.js <span>{"//"}</span> PHP <span>{"//"}</span> Wordpress</>
 
 const Skils = () => {
   const [show, setShow] = useState("design")
