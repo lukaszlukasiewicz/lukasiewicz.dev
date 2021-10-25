@@ -5,8 +5,11 @@ const pass = "1234"
 const LockOut: React.FC = ({ children }) => {
 
   const [phrase, setPhrase] = useState("");
-  useEffect(() => {
+  const [authorized, authorize] = useState(false)
 
+  if (!authorized && phrase == pass) authorize(true);
+  useEffect(() => {
+    if (authorized) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       const { key } = e;
       if (key == "Enter") setPhrase("")
@@ -17,8 +20,8 @@ const LockOut: React.FC = ({ children }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [phrase])
-  return <>{phrase == pass ? children : <div style={{ display: "grid", alignItems: "center", height: "100vh", justifyContent: "center" }}>You are locked down. Enter passphrase</div>}</>
+  }, [phrase, authorized])
+  return <>{authorized ? children : <div style={{ display: "grid", alignItems: "center", height: "100vh", justifyContent: "center" }}>You are locked down. Enter passphrase</div>}</>
 }
 
 export default LockOut
