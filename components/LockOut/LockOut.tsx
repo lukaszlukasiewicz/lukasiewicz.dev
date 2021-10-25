@@ -29,7 +29,7 @@ const LockOut: React.FC = ({ children }) => {
 
   return <>{authorized ? children : <div style={{ display: "grid", alignItems: "center", height: "100vh", justifyContent: "center", textAlign: "center", lineHeight: "2" }}>
     <div>
-      You are locked down.<br />
+      You are locked out.<br />
       Enter passphrase sweetheart<br />
       <span style={{ fontSize: "4em", color: "#FE4365" }} onClick={handleClick}>
         <input type="text" style={{ display: "none" }} />
