@@ -17,11 +17,11 @@ import useI18nContent from 'hooks/useI18nContent'
 const localeContent = {
   "en": {
     title: "Let's talk about things",
-    headerText: "Vivamus nec erat mollis, faucibus nisl tincidunt, mattis tortor. Ut et imperdiet quam, sed tempus ipsum. Nam euismod eros ut feugiat congue."
+    headerText: "Feel free to reach out if got a question or project you want to work on, or if you just want to chat about something."
   },
   "pl": {
     title: "Pogadajmy o rzeczach",
-    headerText: "[pl]In augue turpis, ultrices in leo sed, hendrerit hendrerit urna. Ut pretium dapibus lectus, quis euismod purus mattis eu. Sed fermentum laoreet facilisis."
+    headerText: "Nie krępuj się, jeśli masz jakieś pytanie, projekt nad którym chcesz pracować, lub jeśli chcesz po prostu o czymś porozmawiać. Zapraszam do kontaktu."
   }
 }
 

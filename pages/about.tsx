@@ -18,13 +18,14 @@ import Skils from 'components/Skills/Skills';
 import AnimateInView from 'components/AnimateInView/AnimateInView';
 import Projects from 'components/Projects/Projects';
 import useI18nContent from 'hooks/useI18nContent';
+import { MdOutlineWavingHand } from "react-icons/md"
 
 const localeContent = {
   "en": {
     title: "A little bit about me",
-    headerText: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam delectus nobis soluta officia reprehenderit ducimus praesentium.",
-    aboutHeader: "Ullam, commodi eveniet atque hic in non delectus!",
-    aboutText: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores voluptas inventore dolorem quasi fugiat beatae quos fugit temporibus, amet porro voluptates tempore eligendi, dolorum culpa maiores, minus pariatur deserunt ab maxime voluptatibus quisquam! Adipisci, porro amet est odio laboriosam doloremque eveniet illo delectus atque vel rem nihil maiores debitis repellat odit, rerum praesentium omnis cum quidem aspernatur nobis.",
+    headerText: "",
+    aboutHeader: "I design & build things using HTML, CSS & JavaScript",
+    aboutText: <>I’m a Front-End Developer located in Szczecin, Poland. I started as a designer and transitioned in to front-end development. I&apos;m still passionate about design (especially when it comes to visual identity design) but for last 5 years my main focus is developement. I have worked on a multitude of web and print based projects for a range of clients providing Design (Photoshop, Illustrator, Figma) and Development (HTML, CSS, JS &amp; PHP) services. For almost a decade I designed &amp; developed projects with wonderfoul people &amp; clients at <a href="https://brandoo.pl/"><span>Brandoo <MdOutlineWavingHand /></span></a> Now I&apos;m looking for new challenges and I’m open to freelance opportunities or remote position. Feel free to reach out if you have an intresting Idea.</>,
     work: "Work",
     workHeader: "What I do",
     afterWork: "After work",
@@ -34,9 +35,9 @@ const localeContent = {
 
   "pl": {
     title: "Poznajmy się trochę bliżej",
-    headerText: "[pl]Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam delectus nobis soluta officia reprehenderit ducimus praesentium.",
-    aboutHeader: "[pl]Ullam, commodi eveniet atque hic in non delectus!",
-    aboutText: "[pl]Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores voluptas inventore dolorem quasi fugiat beatae quos fugit temporibus, amet porro voluptates tempore eligendi, dolorum culpa maiores, minus pariatur deserunt ab maxime voluptatibus quisquam! Adipisci, porro amet est odio laboriosam doloremque eveniet illo delectus atque vel rem nihil maiores debitis repellat odit, rerum praesentium omnis cum quidem aspernatur nobis.",
+    headerText: "",
+    aboutHeader: "Projektuję i tworzę rzeczy używając HTML, CSS i JavaScript.",
+    aboutText: <>Jestem Front-End Developerem mieszkającym w Szczecinie, Polska. Zaczynałem jako projektant i przeszedłem do front-end developmentu. Nadal pasjonuję się projektowaniem (szczególnie jeśli chodzi o identyfikację wizualną), ale przez ostatnie 5 lat skupiam się głównie na programowaniu. Pracowałem nad wieloma projektami internetowymi i drukowanymi dla różnych klientów, świadcząc usługi projektowe (Photoshop, Illustrator, Figma) i programistyczne (HTML, CSS, JS i PHP). Przez prawie dekadę projektowałem i rozwijałem projekty z cudownymi ludźmi i klientami w <a href="https://brandoo.pl/"><span>Brandoo <MdOutlineWavingHand /></span></a>. Teraz szukam nowych wyzwań i jestem otwarty na freelance lub pracę zdalną. Zapraszam do kontaktu, jeśli masz ciekawy pomysł.</>,
     work: "Praca",
     workHeader: "Czym sie zajmuje",
     afterWork: "Po pracy",

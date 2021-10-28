@@ -67,8 +67,8 @@ const WaveCursor = (props: CursorProps) => <div className={Styles.WaveCursor}>
 </div>
 
 const cursors = {
-  "default": DefaultCursor,
-  "scroll": ScrollCursor,
+  default: DefaultCursor,
+  scroll: ScrollCursor,
   link: LinkCursor,
   code: CodeCursor,
   design: DesignCursor,

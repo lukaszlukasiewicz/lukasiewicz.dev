@@ -9,15 +9,16 @@ import TransitionCover from 'components/TransitionCover/TransitionCover'
 import { FaGithub, FaRegKissWinkHeart } from "react-icons/fa"
 import BodyClass from 'components/BodyClass/BodyClass'
 import useI18nContent from 'hooks/useI18nContent'
+import Link from 'next/link'
 
 const localeContent = {
   en: {
     title: "Hello :)",
-    headerText: <>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus <FaGithub /> test ipsam delectus nobis soluta officia reprehenderit ducimus praesentium nesciunt rerum at est omnis, itaque velit libero optio amet vitae iure eligendi.<FaRegKissWinkHeart /></>,
+    headerText: <>World! Here you can <Link href="/about"><a><span>get to know me</span></a></Link> a little or <Link href="/contact"><a><span>contact me</span></a></Link> if you want. You can also checkout the source code of this page on <a href="https://github.com/lukaszlukasiewicz/lukasiewicz.dev"><span>Github <FaGithub /></span></a>. Issue reports and pull requests are welcome just be nice <FaRegKissWinkHeart /></>,
   },
   pl: {
-    title: "Cześć :)",
-    headerText: <>[pl]Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus <FaGithub /> test ipsam delectus nobis soluta officia reprehenderit ducimus praesentium nesciunt rerum at est omnis, itaque velit libero optio amet vitae iure eligendi.<FaRegKissWinkHeart /></>,
+    title: "Hello :)",
+    headerText: <>World! Tutaj możesz <Link href="/about"><a><span>poznać mnie trochę</span></a></Link> bliżej lub <Link href="/contact"><a><span>skontaktować się ze mną</span></a></Link> jeśli masz potrzebę. Możesz także sprawdzić kod źródłowy tej strony na <a href="https://github.com/lukaszlukasiewicz/lukasiewicz.dev"><span>Githubie <FaGithub /></span></a>. Zgłoszenia błędów i pull requesty są mile widziane tylko bądź miły(a) <FaRegKissWinkHeart />.</>,
 
   }
 }

@@ -1,16 +1,20 @@
 .AboutSection__Container {
   display:grid;
-  max-width:80ch;
   gap: 2vmax;
   text-align: center;
   align-items: center;
   min-height:80vh;
   display:grid;
 
+  h2 {
+    max-width:23ch;
+    margin:1em auto;
+  }
   p {
     font-size:clamp(1em, .5em + .5vmax ,3em);
     font-weighT:300;
-    
+    max-width:90ch;
+    margin:0 auto;
   }
 }
 
@@ -26,7 +30,10 @@
     }
   }
   +div {
-    margin-top:-20em;
+    margin-top:-12em;
+    @media (min-width:800px) {
+      margin-top:-20em;
+    }
   }
 
   h3 {
@@ -44,13 +51,16 @@
 
 .ProjectsSection {
   pointer-events:none;
+  h2 {
+    margin:0;
+  }
   > div > div > div {
     pointer-events: all;
   }
 }
 
 .ProjectsSection__wrapper {
-  max-widtH:120ch;
+  max-widtH:120ch !important;
   h2 {
     color:#fff;
   }

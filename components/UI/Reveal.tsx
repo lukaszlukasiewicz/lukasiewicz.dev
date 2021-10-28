@@ -1,7 +1,5 @@
-import { motion, useAnimation } from "framer-motion"
+import { motion } from "framer-motion"
 import Styles from './Reveal.module.scss'
-import useIntersectionObserver from "hooks/useIntersectionObserver"
-import { useEffect, useRef } from "react"
 import AnimateInView from "components/AnimateInView/AnimateInView"
 
 const wrapperVariants = {

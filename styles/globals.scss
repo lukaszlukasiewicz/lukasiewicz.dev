@@ -33,10 +33,45 @@ h2 {
   font-size:clamp(2em, 1em + 2vmax, 4em);
   font-weight: 500;
   color:var(--page-color);
+  margin:1em 0;
 }
 
 p {
   line-height:1.8;
+  a {
+    display:inline-block;
+    position:relative;
+    transition:all .3s;
+    text-decoration: underline;
+    &:before {
+      position:absolute;
+      top:0;
+      left:0;
+      width:calc(100% + .3em);
+      margin:0 -.15em;
+      height:100%;
+      background:var(--page-color);
+      content:"";
+      transform:scaleX(0);
+      transition:transform .3s ease-out , background .3s ease-out;
+      transform-origin: right bottom;
+      z-index:0;
+    }
+    svg {
+      vertical-align: text-top;
+    }
+    span {
+      position:relative;
+      z-index:1;
+    }
+    &:hover {
+      color: var(--page-background-color);
+      &:before {
+        transform:scaleX(1);
+        transform-origin: left bottom;
+      }
+    }
+  }
 }
 
 img {

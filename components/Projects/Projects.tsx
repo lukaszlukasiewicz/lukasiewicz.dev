@@ -25,7 +25,7 @@ const getDescriptionVariants = (index: number) => {
 
 const localeContent = {
   en: {
-    header: "Currently working on",
+    header: "I'm working on",
     stage: "stage",
     projects: [
       {
@@ -70,7 +70,7 @@ const Projects: React.FC = () => {
         </motion.div>
       </div>
       <div>
-        <motion.img variants={getImageVariants(2)} src="/rps.png" alt="Rock paper scissors" />
+        <motion.img variants={getImageVariants(2)} src="/habitquest.png" alt="Rock paper scissors" />
         <motion.div variants={getDescriptionVariants(3)} className={Styles.Projects__project_description}>
           <h3>{projects[1].title}</h3>
           <p>{projects[1].description}</p>

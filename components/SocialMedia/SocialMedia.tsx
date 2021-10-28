@@ -4,9 +4,7 @@ import Styles from './SocialMedia.module.scss'
 import AnimatedHeader from "components/AnimatedHeader/AnimatedHeader"
 import Section from "components/UI/Section"
 import { motion } from "framer-motion"
-import { useRouter } from "next/router"
 import { BsArrowRight } from "react-icons/bs"
-import Header from "components/Header/Header"
 import useI18nContent from "hooks/useI18nContent"
 
 const socials = [
@@ -46,11 +44,11 @@ const paragraphVariants = {
 const localeContent = {
   en: {
     header: "I'm on the web",
-    text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis laudantium eveniet enim nisi natus maiores.",
+    text: "I'm not very \"social media\" active person but if You prefer You can use these links to reach me. Just be patient ;)",
   },
   pl: {
-    header: "[pl]I'm on the web",
-    text: "[pl]Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis laudantium eveniet enim nisi natus maiores.",
+    header: "Znajdź mnie w sieci",
+    text: "Nie jestem zbyt aktywną osobą w mediach społecznościowych, ale jeśli wolisz, możesz skorzystać z tych linków, aby się ze mną skontaktować. Tylko proszę o odrobinę cierpliwości ;)",
   },
 }
 
