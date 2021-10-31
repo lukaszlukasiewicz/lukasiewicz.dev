@@ -74,14 +74,11 @@ const Track = ({ track }: { [key: string]: any }) => {
   </a>
 }
 
-const SpotifyTracks = () => {
-  const [tracks, setTracks] = useState([]);
-  useEffect(() => {
-    fetch('/api/spotify')
-      .then(res => res.json())
-      .then(json => setTracks(json.tracks))
-  }, [])
+type SpotifyTracksProps = {
+  tracks?: []
+}
 
+const SpotifyTracks = ({ tracks = [] }: SpotifyTracksProps) => {
   return <div className={Styles.SpotifyTracks}>
     {tracks.map((track: any) => {
       return <Track key={track.title} track={track} />

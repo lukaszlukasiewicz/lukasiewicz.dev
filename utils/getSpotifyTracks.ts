@@ -1,13 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import * as fs from 'fs';
+import getJsonData from './getJsonData';
 
 var SpotifyWebApi = require('spotify-web-api-node');
-
-type Data = {
-  updated?: number,
-  data: string,
-  error?: boolean,
-}
 
 const file = 'data/spotify.json'
 
@@ -35,23 +29,10 @@ const updateSpotify = async () => {
     tracks: tracks
   }
   fs.writeFile(file, JSON.stringify(data), err => {
-    if (err) throw err
+    if (err) console.log("error writing file", file, err)
   })
 }
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  try {
-    const data = fs.readFileSync(file, 'utf8')
-    const parsedData = JSON.parse(data)
-    res.status(200).json(parsedData)
-    if (Date.now() - (parsedData.updated || 100000) > 60 * 1000) updateSpotify()
-  } catch (err: unknown) {
-    res.status(200).json({
-      error: true,
-      data: JSON.stringify(err)
-    })
-  }
-}
+const getSpotifyTracks = () => getJsonData(file, updateSpotify)
+
+export default getSpotifyTracks

@@ -19,6 +19,8 @@ import AnimateInView from 'components/AnimateInView/AnimateInView';
 import Projects from 'components/Projects/Projects';
 import useI18nContent from 'hooks/useI18nContent';
 import { MdOutlineWavingHand } from "react-icons/md"
+import getPocketPosts from 'utils/getPocketPosts';
+import getSpotifyTracks from 'utils/getSpotifyTracks';
 
 const localeContent = {
   "en": {
@@ -46,6 +48,17 @@ const localeContent = {
   }
 }
 
+export function getServerSideProps() {
+  const posketData = getPocketPosts() || []
+  const spotifyData = getSpotifyTracks() || []
+  return {
+    props: {
+      pocket: posketData,
+      spotify: spotifyData,
+    },
+  }
+}
+
 const paragraphVariants = (visible = {}, hidden = {}) => {
   return {
     visible: Object.assign({ y: 0, opacity: 1, transition: { delay: .5, type: "spring" } }, visible),
@@ -53,7 +66,7 @@ const paragraphVariants = (visible = {}, hidden = {}) => {
   }
 }
 
-const About: NextPage = () => {
+const About: NextPage<{ pocket: { upadated: number, posts: [] }, spotify: { updated: number, tracks: [] } }> = (props) => {
   const router = useRouter()
   const { locale } = router;
   const page = usePageConfig("about");
@@ -95,7 +108,7 @@ const About: NextPage = () => {
         </Section>
         <div data-cursor="default;#fff" className={Styles.WorkSection}>
           <Section>
-            <h2 style={{ zIndex: 2, position: "sticky", top: "2rem", fontSize: "2rem", color: "#ddd", textTransform: "uppercase", margin: "2rem .5em 0 .5vw", width: "fit-content" }}>{work}</h2>
+            <h2>{work}</h2>
             <AnimatedHeader level={3} split="letter">{workHeader}</AnimatedHeader>
             <Skils />
           </Section>
@@ -104,14 +117,14 @@ const About: NextPage = () => {
           <Projects />
         </Section>
         <Section className={Styles.AfterWorkSection}>
-          <h2 style={{ zIndex: 2, position: "sticky", top: "2rem", fontSize: "2rem", color: "#ddd", textTransform: "uppercase", margin: "2rem .5em 0 1vw", width: "fit-content" }}>{afterWork}</h2>
+          <h2>{afterWork}</h2>
           <div>
             <AnimatedHeader split="letter" level={3} className={Styles.AfterWorkSection__ReadingHeader}>{reading}</AnimatedHeader>
-            <PocketArticles />
+            <PocketArticles articles={props.pocket.posts} />
           </div>
           <AnimateInView>
             <AnimatedHeader split="letter" level={3} className={Styles.AfterWorkSection__ListeningHeader}>{listening}</AnimatedHeader>
-            <SpotifyTracks />
+            <SpotifyTracks tracks={props.spotify.tracks} />
           </AnimateInView>
         </Section>
         <div data-cursor="default;#fff">

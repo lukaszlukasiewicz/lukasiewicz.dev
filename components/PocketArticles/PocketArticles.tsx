@@ -40,15 +40,12 @@ const localeContent = {
   }
 }
 
-const PocketArticles = () => {
-  const { locale } = useRouter();
+type PocketArticlesProps = {
+  articles?: []
+}
+
+const PocketArticles = ({ articles = [] }: PocketArticlesProps) => {
   const { read } = useI18nContent(localeContent)
-  const [articles, setArticles] = useState<{ [key: string]: any }[] | null>([])
-  useEffect(() => {
-    fetch('/api/pocket')
-      .then(response => response.json())
-      .then(json => setArticles(json.posts))
-  }, [locale])
 
 
   return <AnimateInView className={Styles.PocketArticles}>
