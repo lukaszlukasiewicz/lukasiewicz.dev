@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
 import Styles from './PocketArticles.module.scss'
 import { DefaultButton } from "components/UI/Button";
 import { motion } from "framer-motion";
 import AnimateInView from "components/AnimateInView/AnimateInView";
 import useI18nContent from "hooks/useI18nContent";
+import trimString from 'utils/trimString';
 
 const getArticleVariants = (index: number) => {
   return {
@@ -19,17 +18,6 @@ const buttonVariants = (index: number) => {
     hidden: { x: "2em", opacity: 0 }
   }
 }
-
-
-const trimTitle = (title: string) => {
-  let titleArr = title.split(" ")
-  if (titleArr.length > 8) {
-    titleArr = titleArr.slice(0, 6)
-    titleArr.push('...')
-  }
-  return titleArr.join(" ")
-}
-
 
 const localeContent = {
   en: {
@@ -53,8 +41,8 @@ const PocketArticles = ({ articles = [] }: PocketArticlesProps) => {
       const { item_id: id, top_image_url: image, resolved_url: url, resolved_title: title, excerpt } = article
       return <motion.div variants={getArticleVariants(index)} key={id}>
         <div>
-          <h3>{trimTitle(title)}</h3>
-          <p>{excerpt}</p>
+          <h3>{trimString(title)}</h3>
+          <p>{trimString(excerpt, 140)}</p>
         </div>
         <motion.div variants={buttonVariants(index)}>
           <DefaultButton href={url} data-cursor="link;var(--page-background-color);var(--page-color)">{read}</DefaultButton>
