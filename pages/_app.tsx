@@ -1,4 +1,5 @@
 import '../styles/globals.scss'
+import React from 'react'
 import type { AppProps } from 'next/app'
 import Menu from 'components/Menu/Menu'
 import { AnimatePresence } from 'framer-motion'
@@ -24,12 +25,15 @@ Router.events.on("routeChangeComplete", routeChange);
 Router.events.on("routeChangeStart", routeChange);
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-  return <LockOut>
+
+  const WrapperComponent = Number(process.env.NEXT_PUBLIC_LOCKED) ? LockOut : React.Fragment;
+
+  return <WrapperComponent>
     <Cursor />
     <Menu />
     <AnimatePresence exitBeforeEnter>
       <Component {...pageProps} key={router.route} />
     </AnimatePresence>
-  </LockOut>
+  </WrapperComponent>
 }
 export default MyApp

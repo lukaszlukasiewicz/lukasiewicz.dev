@@ -43,8 +43,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log("================================", req.body)
-
   const { name, email, message } = req.body
   if (!name || !message || !email) return res.status(400).json({ err: "Missing name, message or email" })
   if (!email.match(mailRegex)) return res.status(400).json({ err: "Not valid email" })
