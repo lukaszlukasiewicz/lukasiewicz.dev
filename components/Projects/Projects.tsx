@@ -2,6 +2,7 @@ import Styles from './Projects.module.scss'
 import { motion } from 'framer-motion'
 import AnimateInView from 'components/AnimateInView/AnimateInView'
 import useI18nContent from 'hooks/useI18nContent'
+import { MdTitle } from 'react-icons/md'
 
 const headerVariants = {
   visible: { y: 0, opacity: 1, transition: { type: "spring" } },
@@ -29,10 +30,12 @@ const localeContent = {
     stage: "stage",
     projects: [
       {
+        image: "rps.png",
         title: "Rock Paper Scissors",
         description: "On-line version of popular game made with Blender, Three.js, React & Socket.io",
       },
       {
+        image: "habitquest.png",
         title: "Habit Quest",
         description: "Mix of Habit tracking app & character development inspired by RGP games. Finish quest and collect points",
       }
@@ -43,10 +46,12 @@ const localeContent = {
     stage: "status",
     projects: [
       {
+        image: "rps.png",
         title: "Rock Paper Scissors",
         description: "Wersja on-line popularnej gry stworzona przy użyciu Blendera, Three.js, React i Socket.io",
       },
       {
+        image: "habitquest.png",
         title: "Habit Quest",
         description: "Mieszanka aplikacji do śledzenia nawyków i rozwoju postaci inspirowana grami RGP. Ukończ zadanie i zbieraj punkty",
       }
@@ -54,29 +59,38 @@ const localeContent = {
   }
 }
 
+type project = {
+  title: string,
+  description: string,
+  image: string,
+}
+
+type projectProps = {
+  project: project,
+  index: number,
+}
+
+const Project = ({ project: project, index }: projectProps) => {
+
+  const { stage } = useI18nContent(localeContent)
+  const { image, title, description } = project
+  return <div>
+    <motion.img variants={getImageVariants(index)} src={`/${image}`} alt={title} />
+    <motion.div variants={getDescriptionVariants(index + 1)} className={Styles.Projects__project_description}>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <p><strong>{stage}:</strong> Development</p>
+    </motion.div>
+  </div>
+}
 
 
-const Projects: React.FC = () => {
-  const { header, stage, projects } = useI18nContent(localeContent)
+const Projects = () => {
+  const { header, projects } = useI18nContent(localeContent)
   return <div>
     <motion.h2 variants={headerVariants}>{header}</motion.h2>
     <AnimateInView className={Styles.Projects}>
-      <div>
-        <motion.img variants={getImageVariants(1)} src="/rps.png" alt="Rock paper scissors" />
-        <motion.div variants={getDescriptionVariants(2)} className={Styles.Projects__project_description}>
-          <h3>{projects[0].title}</h3>
-          <p>{projects[0].description}</p>
-          <p><strong>{stage}:</strong> Development</p>
-        </motion.div>
-      </div>
-      <div>
-        <motion.img variants={getImageVariants(2)} src="/habitquest.png" alt="Rock paper scissors" />
-        <motion.div variants={getDescriptionVariants(3)} className={Styles.Projects__project_description}>
-          <h3>{projects[1].title}</h3>
-          <p>{projects[1].description}</p>
-          <p><strong>{stage}:</strong> Design</p>
-        </motion.div>
-      </div>
+      {projects.map((project: project, index: number) => <Project key={index} project={project} index={index} />)}
     </AnimateInView>
   </div>
 }
