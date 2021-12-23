@@ -7,6 +7,8 @@ const file = 'data/spotify.json'
 
 const updateSpotify = async () => {
 
+  console.log("loading spotify data")
+
   const spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_CLIENT_ID,
     clientSecret: process.env.SPOTIFY_CLIENT_SERVER,
@@ -28,9 +30,11 @@ const updateSpotify = async () => {
     updated: Date.now(),
     tracks: tracks
   }
+  console.log("tracks", tracks)
   fs.writeFile(file, JSON.stringify(data), err => {
     if (err) console.log("error writing file", file, err)
   })
+
 }
 
 const getSpotifyTracks = () => getJsonData(file, updateSpotify)
