@@ -8,7 +8,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 html {
-  font-size:clamp(12px, 8px + .5vw, 38px);
+  font-size:clamp(12px, 6px + .5vw, 38px);
 }
 body {
   overflow-y: scroll;
@@ -53,9 +53,10 @@ p {
       background:var(--page-color);
       content:"";
       transform:scaleX(0);
-      transition:transform .3s ease-out , background .3s ease-out;
+      transition:transform .3s ease-out , background-color .3s ease-out;
       transform-origin: right bottom;
       z-index:0;
+      border-radius: .2em;
     }
     svg {
       vertical-align: text-top;
