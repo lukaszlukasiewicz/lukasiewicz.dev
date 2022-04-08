@@ -67,7 +67,7 @@ const paragraphVariants = (visible = {}, hidden = {}) => {
 
 type AboutPageProps = { pocket: { upadated: number, posts: [] }, spotify: { updated: number, tracks: [] } }
 
-const About: NextPage = (props: AboutPageProps) => {
+const About: NextPage<AboutPageProps> = (props) => {
   const router = useRouter()
   const { locale } = router;
   const page = usePageConfig("about");
