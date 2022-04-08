@@ -1,10 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import Styles from "./Cursor.module.scss"
 import { BsMouse, BsInputCursorText } from "react-icons/bs"
 import { BiLink, BiCodeAlt, BiPencil } from "react-icons/bi"
 import { HiOutlineMail } from "react-icons/hi"
 import { MdOutlineWavingHand } from "react-icons/md"
+import { FaFacebook, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa"
+import { IconType } from "react-icons/lib"
 
 const cursorVariants = {
   visible: { scale: 1, opacity: 1, transition: { type: "spring" } },
@@ -28,53 +30,30 @@ const CursorBg: React.FC<CursorProps> = ({ className, children, color, bgColor }
   </motion.div>
 }
 
+
 const DefaultCursor = (props: CursorProps) => <CursorBg className={Styles.DefaultCursor} bgColor={props.bgColor}></CursorBg>
-const ScrollCursor = (props: CursorProps) => <div className={Styles.ScrollCursor}>
-  <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
-  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="scrollContent" style={{ color: props.color }}><BsMouse /> </motion.div>
-</div>
 
-const LinkCursor = (props: CursorProps) => <div className={Styles.LinkCursor}>
-  <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
-  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="linkContent" style={{ color: props.color }}><BiLink /> </motion.div>
-</div>
-
-const DesignCursor = (props: CursorProps) => <div className={Styles.DesignCursor}>
-  <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
-  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="linkContent" style={{ color: props.color }}><BiPencil /> </motion.div>
-</div>
-
-const CodeCursor = (props: CursorProps) => <div className={Styles.CodeCursor}>
-  <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
-  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="linkContent" style={{ color: props.color }}><BiCodeAlt /> </motion.div>
-</div>
-
-
-const MailCursor = (props: CursorProps) => <div className={Styles.MailCursor}>
-  <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
-  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="linkContent" style={{ color: props.color }}><HiOutlineMail /> </motion.div>
-</div>
-
-const InputCursor = (props: CursorProps) => <div className={Styles.InputCursor}>
-  <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
-  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="linkContent" style={{ color: props.color }}><BsInputCursorText /> </motion.div>
-</div>
-
-
-const WaveCursor = (props: CursorProps) => <div className={Styles.WaveCursor}>
-  <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
-  <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="linkContent" style={{ color: props.color }}><MdOutlineWavingHand /> </motion.div>
-</div>
+const getIconCuror = ({ className, Icon }: { className: string, Icon?: IconType }) => {
+  const Cursor = (props: CursorProps) => <div className={className}>
+    <CursorBg className={Styles.CursorBg} bgColor={props.bgColor}></CursorBg>
+    {Icon && <motion.div className={Styles.CursorContent} variants={contentVariants} initial="hidden" animate="visible" exit="hidden" key="linkContent" style={{ color: props.color }}><Icon /> </motion.div>}
+  </div>
+  return Cursor
+}
 
 const cursors = {
   default: DefaultCursor,
-  scroll: ScrollCursor,
-  link: LinkCursor,
-  code: CodeCursor,
-  design: DesignCursor,
-  mail: MailCursor,
-  input: InputCursor,
-  wave: WaveCursor
+  scroll: getIconCuror({ className: Styles.ScrollCursor, Icon: BsMouse }),
+  link: getIconCuror({ className: Styles.LinkCursor, Icon: BiLink }),
+  code: getIconCuror({ className: Styles.CodeCursor, Icon: BiCodeAlt }),
+  design: getIconCuror({ className: Styles.DesignCursor, Icon: BiPencil }),
+  mail: getIconCuror({ className: Styles.MailCursor, Icon: HiOutlineMail }),
+  input: getIconCuror({ className: Styles.InputCursor, Icon: BsInputCursorText }),
+  wave: getIconCuror({ className: Styles.WaveCursor, Icon: MdOutlineWavingHand }),
+  Facebook: getIconCuror({ className: Styles.LinkCursor, Icon: FaFacebook }),
+  GitHub: getIconCuror({ className: Styles.LinkCursor, Icon: FaGithub }),
+  LinkedIn: getIconCuror({ className: Styles.LinkCursor, Icon: FaLinkedin }),
+  Instagram: getIconCuror({ className: Styles.LinkCursor, Icon: FaInstagram }),
 }
 
 const Cursor: React.FC = () => {
@@ -90,7 +69,7 @@ const Cursor: React.FC = () => {
       const { target } = event
       const cursorElement = (target as HTMLElement).closest("[data-cursor]") as HTMLElement
       const newCursor = cursorElement?.dataset.cursor || "default"
-      if (newCursor != cursor) setCursor(newCursor)
+      if (newCursor != cursor) setCursor(newCursor);
     }
     const handleMouseMove = (e: MouseEvent) => {
       setPosition([e.pageX, e.pageY])
