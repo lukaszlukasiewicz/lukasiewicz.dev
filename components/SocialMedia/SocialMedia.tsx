@@ -1,5 +1,4 @@
 import React, { useRef } from "react"
-import { FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa"
 import Styles from './SocialMedia.module.scss'
 import AnimatedHeader from "components/AnimatedHeader/AnimatedHeader"
 import Section from "components/UI/Section"
@@ -11,17 +10,14 @@ const socials = [
   {
     name: "GitHub",
     url: "https://github.com/lukaszlukasiewicz/",
-    icon: FaGithub,
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/llukasiewicz/",
-    icon: FaLinkedin,
   },
   {
     name: "Facebook",
     url: "https://www.facebook.com/lukasz.lukasiewicz/",
-    icon: FaFacebook
   },
   {
     name: "Instagram",
@@ -62,8 +58,10 @@ const SocialMedia = () => {
     </div>
     <div className={Styles.SocailMedia__wrapper}>
       {socials.map((social, index) => {
+        const cursor = `${social.name};var(--page-background-color);var(--page-color)`;
+        //const cursor = "link"
         return <div key={social.name}>
-          <motion.a data-cursor="link;var(--page-background-color);var(--page-color)" href={social.url} className={Styles.SocialMedia__Icon} variants={getIconVariants(index)} >
+          <motion.a data-cursor={cursor} href={social.url} className={Styles.SocialMedia__Icon} variants={getIconVariants(index)} >
             <span>{social.name}</span>
             <BsArrowRight />
           </motion.a>
