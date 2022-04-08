@@ -5,11 +5,12 @@
   width:100%;
   > div {
     display:flex;
+    font-size:1.2em;
     align-items: center;
     gap:2em;
     padding:1em 0 .5em 0;
     justify-content: flex-end;
-    max-width:80em;
+    max-width:80rem;
     margin:0 auto;
     border-bottom:solid 1px #9993;
     @media screen and (max-width:40em) {
