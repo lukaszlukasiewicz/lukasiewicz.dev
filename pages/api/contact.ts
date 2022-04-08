@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 type mailData = {
   name: string,
@@ -8,10 +8,13 @@ type mailData = {
 
 async function send({ name, email, message }: mailData) {
   const nodemailer = require("nodemailer");
+  console.log({
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PSWD,
+  })
   const transporter = nodemailer.createTransport({
     port: 465,
-    host: "smtp.gmail.com",
-    requireTLS: true,
+    host: "ssl0.ovh.net",
     auth: {
       user: process.env.EMAIL,
       pass: process.env.EMAIL_PSWD,

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import { NextPage } from 'next'
 import Head from 'next/head'
 import Header, { SubHeader } from 'components/Header/Header'
 import { useRouter } from 'next/router';
@@ -16,7 +16,6 @@ import SpotifyTracks from 'components/SpotifyTracks/SpotifyTracks';
 import PocketArticles from 'components/PocketArticles/PocketArticles';
 import Skils from 'components/Skills/Skills';
 import AnimateInView from 'components/AnimateInView/AnimateInView';
-import Projects from 'components/Projects/Projects';
 import useI18nContent from 'hooks/useI18nContent';
 import { MdOutlineWavingHand } from "react-icons/md"
 import getPocketPosts from 'utils/getPocketPosts';
@@ -66,7 +65,9 @@ const paragraphVariants = (visible = {}, hidden = {}) => {
   }
 }
 
-const About: NextPage<{ pocket: { upadated: number, posts: [] }, spotify: { updated: number, tracks: [] } }> = (props) => {
+type AboutPageProps = { pocket: { upadated: number, posts: [] }, spotify: { updated: number, tracks: [] } }
+
+const About: NextPage = (props: AboutPageProps) => {
   const router = useRouter()
   const { locale } = router;
   const page = usePageConfig("about");
@@ -113,9 +114,6 @@ const About: NextPage<{ pocket: { upadated: number, posts: [] }, spotify: { upda
             <Skils />
           </Section>
         </div>
-        <Section className={Styles.ProjectsSection} containerClassName={Styles.ProjectsSection__wrapper}>
-          <Projects />
-        </Section>
         <Section className={Styles.AfterWorkSection}>
           <h2>{afterWork}</h2>
           <div>
