@@ -14,7 +14,7 @@ import Link from 'next/link'
 const localeContent = {
   en: {
     title: "Hello :)",
-    headerText: <>World! Here you can <Link href="/about"><a data-cursor="link;var(--page-color);var(--page-background-color)"><span>get to know me</span></a></Link> a little or <Link href="/contact"><a data-cursor="mail;var(--page-color);var(--page-background-color)"><span>contact me</span></a></Link> if you want. You can also checkout the source code of this page on <a href="https://github.com/lukaszlukasiewicz/lukasiewicz.dev" data-cursor="GitHub;var(--page-color);var(--page-background-color)"><span>Github</span></a>. Issue reports and pull requests are welcome just be nice <FaRegKissWinkHeart /></>,
+    headerText: <>World! Here you can <Link href="/about"><a data-cursor="link;var(--page-color);var(--page-background-color)"><span>get to know me</span></a></Link> a little or <Link href="/contact"><a data-cursor="mail;var(--page-color);var(--page-background-color)"><span>contact me</span></a></Link> if you want. You can also checkout the source code of this page on <a href="https://github.com/lukaszlukasiewicz/lukasiewicz.dev" data-cursor="GitHub;var(--page-color);var(--page-background-color)"><span>Github</span></a>. Issue reports and pull requests are welcome, just be nice <FaRegKissWinkHeart /></>,
   },
   pl: {
     title: "Hello :)",

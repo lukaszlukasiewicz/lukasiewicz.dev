@@ -17,7 +17,7 @@ import useI18nContent from 'hooks/useI18nContent'
 const localeContent = {
   "en": {
     title: "Let's talk about things",
-    headerText: "Feel free to reach out if got a question or project you want to work on, or if you just want to chat about something."
+    headerText: "Feel free to reach out if you got a question or project you want to work on, or if you just want to chat about something."
   },
   "pl": {
     title: "Pogadajmy o rzeczach",
