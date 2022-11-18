@@ -11,11 +11,17 @@ type ButtonProps = {
 }
 
 
-export const Button: React.FC<ButtonProps> = ({ children, className, type, href, color = "", buttonSize, backgroundColor = "", disabled = false, ...rest }) => {
+export const Button: React.FC<ButtonProps> = ({ children, className, type, href, color, buttonSize, backgroundColor, disabled = false, ...rest }) => {
 
-  if (href) return <a href={href} className={[Styles.Button, buttonSize && Styles['Button__' + buttonSize], className, disabled && Styles.Button__disabled].join(" ")} {...rest} style={{ color, backgroundColor }}>
-    {children}
-  </a>
+  if (href) return (
+    <a
+      href={href}
+      className={[Styles.Button, buttonSize && Styles['Button__' + buttonSize], className, disabled && Styles.Button__disabled].join(" ")}
+      {...rest}
+      style={{ color, backgroundColor }}>
+      {children}
+    </a>
+  )
   return <button type={type} disabled={disabled} className={[Styles.Button, buttonSize && Styles['Button__' + buttonSize], className].join(" ")} {...rest} style={{ color, backgroundColor }}>
     {children}
   </button>

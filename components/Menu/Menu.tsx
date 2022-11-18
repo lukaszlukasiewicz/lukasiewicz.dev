@@ -6,7 +6,7 @@ import usePageConfig from 'hooks/usePageConfig'
 import { motion } from 'framer-motion'
 
 
-export const Logo = ({ fill = "" }: { fill?: string }) => {
+export const Logo = ({ fill }: { fill?: string }) => {
   return <svg width="100%" height="100%" viewBox="0 0 60 60" version="1.1" className={Styles.Menu__logoIcon}>
     <g transform="matrix(-0.967205,0,0,0.967205,58.0161,-0.173803)">
       <g transform="matrix(0.0386158,0,0,0.0386158,-10.6158,-8.35138)">
