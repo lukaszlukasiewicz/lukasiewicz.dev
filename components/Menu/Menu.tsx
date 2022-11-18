@@ -35,18 +35,18 @@ const Menu = () => {
     <div style={{ color: currentPage?.color, borderBottomColor: currentPage?.color + "22" }}>
       <div className={[Styles.Menu__link, Styles.Menu__logo].join(' ')}>
         <Link scroll={false} href="/">
-          <a><Logo fill={currentPage.color} />.dev</a>
+          <Logo fill={currentPage.color} />.dev
         </Link>
       </div>
       {pages.filter(entry => !!entry.inMenu).map(entry => {
         const { path, name } = entry
         const isActive = pathname === path
-        return <Link scroll={false} href={path} key={name[currentLocale]}>
-          <a className={`${Styles['Menu__link']} ${isActive && Styles['Menu__link--active']}`}>{name[currentLocale]}</a>
+        return <Link scroll={false} href={path} key={name[currentLocale]} className={`${Styles['Menu__link']} ${isActive && Styles['Menu__link--active']}`}>
+          {name[currentLocale]}
         </Link>
       })}
-      {locales?.filter(lc => lc != locale).map(lc => <Link href={pathname} key={lc} locale={lc}>
-        <a className={`${Styles.Menu__link} ${Styles.Menu__locale}`}>{lc}</a>
+      {locales?.filter(lc => lc != locale).map(lc => <Link href={pathname} key={lc} locale={lc} className={`${Styles.Menu__link} ${Styles.Menu__locale}`}>
+        {lc}
       </Link>)}
     </div>
   </motion.nav>

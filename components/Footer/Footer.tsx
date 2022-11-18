@@ -26,15 +26,15 @@ const Footer = () => {
       <div>
         <div className={Styles.Footer__logo}>
           <Link scroll={false} href="/">
-            <a><Logo />.dev</a>
+            <Logo />.dev
           </Link>
         </div>
         <div className={Styles.HR}></div>
         {pages.filter(entry => !!entry.inMenu).map(entry => {
           const { path, name } = entry
           const isActive = pathname === path
-          return <Link scroll={false} href={path} key={name[currentLocale]}>
-            <a className={`${Styles['Menu__link']} ${isActive && Styles['Menu__link--active']}`}>{name[currentLocale]}</a>
+          return <Link scroll={false} href={path} key={name[currentLocale]} className={`${Styles['Menu__link']} ${isActive && Styles['Menu__link--active']}`}>
+            {name[currentLocale]}
           </Link>
         })}
       </div>

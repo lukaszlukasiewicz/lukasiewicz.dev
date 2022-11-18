@@ -167,7 +167,7 @@ const ContactForm = () => {
   }
 
   return <div className={[Styles.ContactWrapper, Styles[`ContactWrapper-${locale}`]].join(" ")}>
-    <AnimatePresence exitBeforeEnter={true}>
+    <AnimatePresence mode="wait">
       {!mailSent && <motion.div variants={formVariants} initial="hidden" animate="visible" exit="hidden" key="form">
         <motion.h2 variants={headerVariants}>{contactFormHeader}</motion.h2>
         <form onSubmit={handleSubmit}>

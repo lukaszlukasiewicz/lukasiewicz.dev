@@ -1,5 +1,5 @@
 {
-  "name": "redux",
+  "name": "lukasiewicz.dev",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "framer-motion": "^4.1.17",
-    "next": "11.1.2",
+    "next": "^13.0.4",
     "nodemailer": "^6.7.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "framer-motion": "^7.6.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.3.1",
     "sass": "^1.42.1",
     "spotify-web-api-node": "^5.0.2"
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/react": "17.0.27",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2",
+    "eslint-config-next": "^13.0.4",
     "typescript": "4.4.3"
   }
 }

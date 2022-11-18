@@ -46,7 +46,7 @@ const Skils = () => {
         </motion.div>
       </div>
       <motion.div variants={tabsContainerVariants}>
-        <AnimatePresence exitBeforeEnter={true}>
+        <AnimatePresence mode="wait">
           {show == "design" && <motion.div className={Styles.SkillsTab} key="deign" variants={tabVariants} animate="visible" exit="hidden" initial="hidden">
             {design}
           </motion.div>}

@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return <>
     <Cursor />
     <Menu />
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       <Component {...pageProps} key={router.route} />
     </AnimatePresence>
   </>

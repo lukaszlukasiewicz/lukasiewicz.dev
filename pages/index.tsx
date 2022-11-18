@@ -14,11 +14,11 @@ import Link from 'next/link'
 const localeContent = {
   en: {
     title: "Hello :)",
-    headerText: <>World! Here you can <Link href="/about"><a data-cursor="link;var(--page-color);var(--page-background-color)"><span>get to know me</span></a></Link> a little or <Link href="/contact"><a data-cursor="mail;var(--page-color);var(--page-background-color)"><span>contact me</span></a></Link> if you want. You can also checkout the source code of this page on <a href="https://github.com/lukaszlukasiewicz/lukasiewicz.dev" data-cursor="GitHub;var(--page-color);var(--page-background-color)"><span>Github</span></a>. Issue reports and pull requests are welcome, just be nice <FaRegKissWinkHeart /></>,
+    headerText: <>World! Here you can <Link href="/about" data-cursor="link;var(--page-color);var(--page-background-color)"><span>get to know me</span></Link> a little or <Link href="/contact" data-cursor="mail;var(--page-color);var(--page-background-color)"><span>contact me</span></Link> if you want. You can also checkout the source code of this page on <a href="https://github.com/lukaszlukasiewicz/lukasiewicz.dev" data-cursor="GitHub;var(--page-color);var(--page-background-color)"><span>Github</span></a>. Issue reports and pull requests are welcome, just be nice <FaRegKissWinkHeart /></>,
   },
   pl: {
     title: "Hello :)",
-    headerText: <>World! Tutaj możesz <Link href="/about"><a data-cursor="link"><span>poznać mnie trochę</span></a></Link> bliżej lub <Link href="/contact"><a><span>skontaktować się ze mną</span></a></Link> jeśli masz potrzebę. Możesz także sprawdzić kod źródłowy tej strony na <a href="https://github.com/lukaszlukasiewicz/lukasiewicz.dev"><span>Githubie <FaGithub /></span></a>. Zgłoszenia błędów i pull requesty są mile widziane tylko bądź miły(a) <FaRegKissWinkHeart />.</>,
+    headerText: <>World! Tutaj możesz <Link href="/about" data-cursor="link"><span>poznać mnie trochę</span></Link> bliżej lub <Link href="/contact"><span>skontaktować się ze mną</span></Link> jeśli masz potrzebę. Możesz także sprawdzić kod źródłowy tej strony na <a href="https://github.com/lukaszlukasiewicz/lukasiewicz.dev"><span>Githubie <FaGithub /></span></a>. Zgłoszenia błędów i pull requesty są mile widziane tylko bądź miły(a) <FaRegKissWinkHeart />.</>,
   }
 }
 
