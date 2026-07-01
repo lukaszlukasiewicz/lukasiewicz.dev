@@ -1,46 +1,42 @@
-# Multi-stage build for Next.js with HTTPS support
-# Stage 1: Build the application
-FROM node:18-alpine AS builder
+# Multi-stage Dockerfile for Next.js application
 
+# --- Dependencies stage ---
+FROM node:18-alpine AS deps
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-RUN npm ci
+COPY package.json package-lock.json ./
+RUN npm ci --only=production
 
-# Copy source code and build
+# --- Build stage ---
+FROM node:18-alpine AS builder
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
 RUN npm run build
 
-# Stage 2: Production runtime with nginx reverse proxy
+# --- Production stage ---
 FROM node:18-alpine AS runner
-
 WORKDIR /app
 
-# Install nginx and supervisor
-RUN apk add --no-cache nginx supervisor openssl
+ENV NODE_ENV=production
+ENV PORT=3000
 
-# Create necessary directories
-RUN mkdir -p /var/log/supervisor /run/nginx /var/lib/nginx/logs
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-# Copy built application from builder
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/package*.json ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/public ./public
 
-# Copy nginx and supervisor configurations
-COPY docker/nginx.conf /etc/nginx/nginx.conf
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY docker/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+USER nextjs
 
-# Create SSL certificate directory
-RUN mkdir -p /etc/nginx/ssl
+EXPOSE 3000
 
-# Expose HTTP and HTTPS ports
-EXPOSE 80 443
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD wget --quiet --tries=1 --spider http://localhost:3000 || exit 1
 
-# Use supervisor to manage both nginx and node processes
-CMD ["/entrypoint.sh"]
+CMD ["npm", "start"]
