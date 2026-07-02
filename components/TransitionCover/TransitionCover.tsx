@@ -5,6 +5,7 @@ import Styles from "./TransitionCover.module.scss"
 
 
 type TransitionCoverProps = {
+  children?: React.ReactNode,
   direction?: "in" | "out"
 }
 

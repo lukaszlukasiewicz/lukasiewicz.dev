@@ -2,7 +2,7 @@ import { useAnimation } from "framer-motion"
 import Styles from './Section.module.scss'
 import AnimateInView from "components/AnimateInView/AnimateInView"
 
-const Section: React.FC<{ className?: string, containerClassName?: string }> = ({ className = "", containerClassName = "", children }) => {
+const Section: React.FC<{ children?: React.ReactNode, className?: string, containerClassName?: string }> = ({ className = "", containerClassName = "", children }) => {
 
   const controls = useAnimation()
 

@@ -12,7 +12,7 @@ const coverVariants = {
   hidden: { scaleY: 1, transition: { ease: "easeOut" } }
 }
 
-const Reveal: React.FC<{ className?: string, color?: string }> = ({ className = "", color, children }) => {
+const Reveal: React.FC<{ children?: React.ReactNode, className?: string, color?: string }> = ({ className = "", color, children }) => {
 
 
   return <AnimateInView>

@@ -1,6 +1,7 @@
 import Styles from './Button.module.scss'
 
 type ButtonProps = {
+  children?: React.ReactNode,
   color?: string,
   backgroundColor?: string,
   buttonSize?: string,

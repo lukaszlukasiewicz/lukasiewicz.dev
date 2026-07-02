@@ -3,7 +3,7 @@ import { FaRegKissWinkHeart } from "react-icons/fa"
 
 const pass = "1234az"
 
-const LockOut: React.FC = ({ children }) => {
+const LockOut: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
 
   const [authorized, authorize] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)

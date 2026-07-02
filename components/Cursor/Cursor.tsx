@@ -18,6 +18,7 @@ const contentVariants = {
 }
 
 type CursorProps = {
+  children?: React.ReactNode,
   color?: string,
   bgColor?: string,
   className?: string,

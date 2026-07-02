@@ -43,7 +43,7 @@ const AnimatedHeader = ({ children, split = "word", level = 2, className = "", i
   const { locale } = useRouter()
   const words = children.trim().split(" ")
   let letterIndex = 0;
-  const Header = `h${level}` as keyof JSX.IntrinsicElements;
+  const Header = `h${level}` as keyof React.JSX.IntrinsicElements;
   return <Header className={[Styles.AnimatedHeader, className].join(" ")} style={style}>
     {words.map((word, index) => {
       return <React.Fragment key={word + index}>

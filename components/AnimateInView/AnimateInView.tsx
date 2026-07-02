@@ -3,6 +3,7 @@ import useIntersectionObserver from "hooks/useIntersectionObserver";
 import { useEffect, useRef } from "react";
 
 type AnimateInViewProps = {
+  children?: React.ReactNode,
   style?: React.CSSProperties,
   className?: string,
   animateFromTop?: boolean

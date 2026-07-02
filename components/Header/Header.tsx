@@ -3,6 +3,7 @@ import usePageConfig from "hooks/usePageConfig"
 
 
 type HeaderProps = {
+  children?: React.ReactNode,
   style?: React.CSSProperties
 }
 
@@ -14,6 +15,7 @@ const Header: React.FC<HeaderProps> = ({ children, style }) => {
   </header>
 }
 type SubHeaderProps = {
+  children?: React.ReactNode,
   pageId?: string
 }
 export const SubHeader: React.FC<SubHeaderProps> = ({ children, pageId = "" }) => {

@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-const CreateComponent = (match: boolean): React.ReactNode => {
-  const Component: React.FC = ({ children }) => <>{match ? children : null}</>
+const CreateComponent = (match: boolean): React.FC<{ children?: React.ReactNode }> => {
+  const Component: React.FC<{ children?: React.ReactNode }> = ({ children }) => <>{match ? children : null}</>
   return Component
 }
 
 const useMediaQuery = function (query = ""): boolean {
   const [match, setMatch] = useState(false);
 
-  const matchQuery = useCallback(e => {
+  const matchQuery = useCallback((e: UIEvent) => {
     const queryMatch = window.matchMedia(query);
     if (match !== queryMatch.matches) setMatch(queryMatch.matches);
   }, [match, query]);
