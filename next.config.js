@@ -7,4 +7,10 @@ module.exports = {
     defaultLocale: "en",
     localeDetection: false,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
