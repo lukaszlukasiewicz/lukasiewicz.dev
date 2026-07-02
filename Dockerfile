@@ -15,7 +15,6 @@ WORKDIR /app
 
 # Prevent npm interactive prompts
 ENV CI=true
-ENV NODE_ENV=production
 ENV npm_config_loglevel=warn
 
 COPY package.json package-lock.json* ./
