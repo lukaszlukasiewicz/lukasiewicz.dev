@@ -1,21 +1,19 @@
 # Multi-stage Dockerfile for Next.js application
 # Optimized for Dokploy deployment
 
-# --- Dependencies stage ---
-FROM node:22-alpine AS deps
+# --- Build stage ---
+FROM node:22-alpine AS builder
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+# Prevent npm interactive prompts and skip audit/funding messages
+ENV CI=true
+ENV NODE_ENV=production
+
 COPY package.json package-lock.json* ./
-RUN npm ci --omit=dev
+RUN npm ci --no-audit --no-fund
 
-# --- Build stage ---
-FROM node:22-alpine AS builder
-WORKDIR /app
-
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
 RUN npm run build
 
 # --- Production stage ---
